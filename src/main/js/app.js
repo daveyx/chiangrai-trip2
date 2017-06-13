@@ -7,9 +7,7 @@ const client = require('./client');
 
 const follow = require('./follow'); // function to hop multiple links by "rel"
 
-const root = '/api';
-
-class App extends React.Component {
+export default class App extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -23,7 +21,7 @@ class App extends React.Component {
 
 	// tag::follow-2[]
 	loadFromServer(pageSize) {
-		follow(client, root, [
+		follow(client, '/api', [
 			{rel: 'employees', params: {size: pageSize}}]
 		).then(employeeCollection => {
 			return client({
@@ -72,7 +70,7 @@ class App extends React.Component {
 
 	// tag::create[]
 	onCreate(newEmployee) {
-		follow(client, root, ['employees']).done(response => {
+		follow(client, '/api', ['employees']).done(response => {
 			client({
 				method: 'POST',
 				path: response.entity._links.self.href,
@@ -162,9 +160,6 @@ class App extends React.Component {
 	// end::follow-1[]
 
 	render() {
-
-		console.log("render1", this.state.page);
-		console.log("render2", this.state.employees);
 		return (
 			<div>
 				<CreateDialog attributes={this.state.attributes} onCreate={this.onCreate}/>
@@ -404,9 +399,3 @@ class Employee extends React.Component {
 		)
 	}
 }
-// end::employee[]
-
-ReactDOM.render(
-	<App />,
-	document.getElementById('react')
-)
