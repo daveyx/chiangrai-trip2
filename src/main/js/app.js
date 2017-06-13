@@ -152,12 +152,10 @@ export default class App extends React.Component {
 		}
 	}
 
-	// tag::follow-1[]
 	componentDidMount() {
 		this.loadFromServer(this.state.pageSize);
 		console.log("componentDidMount", this.state.page);
 	}
-	// end::follow-1[]
 
 	render() {
 		return (
