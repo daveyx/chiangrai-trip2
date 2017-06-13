@@ -1,9 +1,7 @@
-
 import React from 'react';
-import Main from './main.js'
 import { IndexLink, Link } from 'react-router';
 
-export default class App extends React.Component {
+export default class Test extends React.Component {
 	
 	render() {
 		return (
@@ -16,7 +14,7 @@ export default class App extends React.Component {
 				<br />
 				<Link to="/test">test Link</Link>
 				<br />
-				<Main />
+				<p>This is a test</p>
 			</div>
 		)
 	}
