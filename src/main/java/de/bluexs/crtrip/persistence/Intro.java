@@ -2,6 +2,7 @@ package de.bluexs.crtrip.persistence;
 
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,9 +21,11 @@ public class Intro {
 
 	private @Id @GeneratedValue Long id;
 	private String title;
+	@ElementCollection(targetClass=String.class)
 	private List<String> texts;
 	private String image;
 	private String imageText;
+	@ElementCollection(targetClass=String.class)
 	private List<String> images;
 	
 	@SuppressWarnings("unused")
