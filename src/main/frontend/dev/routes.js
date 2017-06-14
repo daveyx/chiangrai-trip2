@@ -13,12 +13,12 @@ export default class Routes extends React.Component {
 
   render() {
     return(
-    	<Router history={useBasename(() => browserHistory)({ basename: BASENAME })}>
-			<Route path="/" component={App}>
-				<IndexRoute component={App} />
-			</Route>
-			<Route path="/test" component={Test} />
-		</Router>
-	)
+      <Router history={useBasename(() => browserHistory)({ basename: BASENAME })}>
+        <Route path="/" component={App}>
+          <IndexRoute component={App} />
+        </Route>
+        <Route path="/test" component={Test} />
+      </Router>
+    )
   }
 }
