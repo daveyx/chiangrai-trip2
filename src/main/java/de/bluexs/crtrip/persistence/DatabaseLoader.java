@@ -5,10 +5,14 @@ import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import de.bluexs.crtrip.repos.DayRepository;
 import de.bluexs.crtrip.repos.IntroRepository;
+import de.bluexs.crtrip.repos.ManagerRepository;
 
 /**
  * 
@@ -21,15 +25,24 @@ public class DatabaseLoader implements CommandLineRunner {
 
 	private final DayRepository days;
 	private final IntroRepository intros;
+	private final ManagerRepository managers;
 
 	@Autowired
-	public DatabaseLoader(final DayRepository dayRepository, final IntroRepository introRepository) {
+	public DatabaseLoader(final DayRepository dayRepository, final IntroRepository introRepository, final ManagerRepository managerRepository) {
 		this.days = dayRepository;
 		this.intros = introRepository;
+		this.managers = managerRepository;
 	}
 
 	@Override
 	public void run(String... strings) throws Exception {
+
+		@SuppressWarnings("unused")
+		final Manager daveyx = this.managers.save(new Manager("David", "doesn't matter", "ADMIN"));
+
+		SecurityContextHolder.getContext().setAuthentication(
+			new UsernamePasswordAuthenticationToken("David", "doesn't matter",
+				AuthorityUtils.createAuthorityList("ADMIN")));
 		
 		final Intro i1 = new Intro("Jaae and David experiencing the north of Thailand",
 				new ArrayList<String>(Arrays.asList("Nice to welcome you here! Have fun on this webpage.",
@@ -63,6 +76,8 @@ public class DatabaseLoader implements CommandLineRunner {
 		
 		this.days.save(day1);
 		this.days.save(day2);
+
+		SecurityContextHolder.clearContext();
 	}
 }
 
