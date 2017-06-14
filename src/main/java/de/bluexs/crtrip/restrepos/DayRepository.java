@@ -14,4 +14,6 @@ public interface DayRepository extends Repository<Day, Long> {
 
 	Day findById(final Long id);
 
+	Day save(Day day);
+
 }
