@@ -12,6 +12,6 @@ public interface IntroRepository extends Repository<Intro, Long> {
 
 	Intro findById(final Long id);
 
-	Intro save(Day day);
+	Intro save(Intro intro);
 
 }
