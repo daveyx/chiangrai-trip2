@@ -1,5 +1,5 @@
 
-package de.bluexs.crtrip;
+package de.bluexs.crtrip.persistence;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +12,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+/**
+ * 
+ * @author daveyx
+ * 
+ */
 
 @Data
 @ToString(exclude = "password")
@@ -32,7 +38,7 @@ public class Manager {
 		this.password = PASSWORD_ENCODER.encode(password);
 	}
 
-	protected Manager() {}
+	public Manager() {}
 
 	public Manager(String name, String password, String... roles) {
 

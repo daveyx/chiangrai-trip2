@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import de.bluexs.crtrip.repos.DayRepository;
+import de.bluexs.crtrip.repos.IntroRepository;
+
 /**
  * 
  * @author daveyx

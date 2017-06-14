@@ -1,6 +1,8 @@
-package de.bluexs.crtrip.persistence;
+package de.bluexs.crtrip.repos;
 
 import org.springframework.data.repository.Repository;
+
+import de.bluexs.crtrip.persistence.Day;
 
 /**
  * 

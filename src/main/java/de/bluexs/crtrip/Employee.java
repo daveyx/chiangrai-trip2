@@ -8,6 +8,7 @@ import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import de.bluexs.crtrip.persistence.Manager;
 import lombok.Data;
 
 @Data
