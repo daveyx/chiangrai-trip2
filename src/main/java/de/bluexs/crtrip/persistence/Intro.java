@@ -22,12 +22,12 @@ public class Intro {
 	private String title;
 	private List<String> texts;
 	private String image;
-	private String images;
+	private List<String> images;
 	
 	@SuppressWarnings("unused")
 	private Intro() {}
 
-	public Intro(final String title, final List<String> texts, final String image, final String images) {
+	public Intro(final String title, final List<String> texts, final String image, final List<String> images) {
 		this.title = title;
 		this.texts = texts;
 		this.image = image;
