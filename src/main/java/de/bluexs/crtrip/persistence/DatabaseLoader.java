@@ -21,7 +21,7 @@ public class DatabaseLoader implements CommandLineRunner {
 	private final DayRepository days;
 
 	@Autowired
-	public DatabaseLoader(DayRepository dayRepository) {
+	public DatabaseLoader(final DayRepository dayRepository) {
 		this.days = dayRepository;
 	}
 
@@ -34,6 +34,7 @@ public class DatabaseLoader implements CommandLineRunner {
 						"We started from Phuket on saturday, February, 25. Our flight from Phuket to Chiang Rai was scheduled at 9:25pm.",
 						"There is only one one airline operating the route from Phuket to Chiang Rai: VietJetAir. Flying directly to Chiang Rai with VietJetAir was much cheaper than go to Chiang Mai with AirAsia. Furthermore we would had to go from Chiang Mai to Chiang Rai first. But anyway we will visit Chiang Mai on this trip too...")),
 				"https://www.daveyx.ga/chiangrai-trip/img/th-flag.jpg",
+				"Amazing Thailand",
 				null);		
 		
 		final Intro i2 = new Intro("Summary of Day 1",
@@ -42,38 +43,23 @@ public class DatabaseLoader implements CommandLineRunner {
 						"After that we went to Phra That Chom Si Thep for the sunset view. The highlight of the day on a small mountain in beautiful nature and no people.",
 						"For dinner we went to Chiang Rai city for eat Khao Soy, famous local food. As the King Mengrai Monument was nearby, we visited it too, although we were really tired already.")),
 				null,
+				null,
 				new ArrayList<String>(Arrays.asList("https://www.daveyx.ga/data/chiangraitrip/day1/watrongkhun.jpg", 
 						"https://www.daveyx.ga/data/chiangraitrip/day1/singhapark.jpg",
 						"https://www.daveyx.ga/data/chiangraitrip/day1/phrathatchomsithep.jpg")));
 
+		final Day day1 = new Day("Trip to Chiang Rai with Jaae and David",
+				"<div id=\"author\" className=\"text-center\">by <a href=\"https://www.daveyx.ga\" title=\"daveyx\" target=\"_blank\">daveyx</a></div>",
+				"https://www.daveyx.ga/chiangrai-trip/img/maejaedee.jpg",
+				i1);
+
+		final Day day2 = new Day("",
+				null,
+				"https://www.daveyx.ga/data/img/watrongkhun.jpg",
+				i2);
 		
-		
-		
-//		<div id="author" className="text-center">by <a href="https://www.daveyx.ga" title="daveyx" target="_blank">daveyx</a></div>
-		
-		
-//		Manager greg = this.managers.save(new Manager("greg", "turnquist",
-//							"ROLE_MANAGER"));
-//		Manager oliver = this.managers.save(new Manager("oliver", "gierke",
-//							"ROLE_MANAGER"));
-//
-//		SecurityContextHolder.getContext().setAuthentication(
-//			new UsernamePasswordAuthenticationToken("greg", "doesn't matter",
-//				AuthorityUtils.createAuthorityList("ROLE_MANAGER")));
-//
-//		this.employees.save(new Employee("Frodo", "Baggins", "ring bearer", greg));
-//		this.employees.save(new Employee("Bilbo", "Baggins", "burglar", greg));
-//		this.employees.save(new Employee("Gandalf", "the Grey", "wizard", greg));
-//
-//		SecurityContextHolder.getContext().setAuthentication(
-//			new UsernamePasswordAuthenticationToken("oliver", "doesn't matter",
-//				AuthorityUtils.createAuthorityList("ROLE_MANAGER")));
-//
-//		this.employees.save(new Employee("Samwise", "Gamgee", "gardener", oliver));
-//		this.employees.save(new Employee("Merry", "Brandybuck", "pony rider", oliver));
-//		this.employees.save(new Employee("Peregrin", "Took", "pipe smoker", oliver));
-//
-//		SecurityContextHolder.clearContext();
+		this.days.save(day1);
+		this.days.save(day2);
 	}
 }
 
