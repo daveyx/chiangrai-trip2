@@ -11,40 +11,32 @@ export default class DayWrapper extends React.Component {
   }
 
   componentDidMount() {
-    console.log("didmount", this.props.params.dayNumber)
     if (typeof this.props.params.dayNumber === 'undefined' || this.props.params.dayNumber === '1') {
-      let data = this.getData();
-      this.setState({
-        data: data
-      }, function() {this.setBgImage()});
+      this.getData();
     }
   }
 
   componentDidUpdate(nextProps) {
     if (nextProps.params.dayNumber !== this.props.params.dayNumber) {
       if (typeof nextProps.params.dayNumber === 'undefined' || nextProps.params.dayNumber === '1') {
-        let data = this.getData();
-        this.setState({
-          data: data
-        }, function() {this.setBgImage()});
+        this.getData();
       }
     }
   }
 
   setBgImage() {
-    this.props.setBgImage(this.state.data.imgName);
+    this.props.setBgImage(this.state.data.image);
   }
 
   getData() {
     axios.get("http://localhost:8080/api/days/1")
       .then(response => {
-        console.log(response)
-//        this.setState({
-//          gallery: response.data.data
-//        });
+        this.setState({
+          data: response.data
+        }, () => this.setBgImage());
     }).catch(function (error) {
       console.log("error axios-get1: " + error);
-    }); 
+    });
   }
 
   render() {

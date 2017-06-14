@@ -21,9 +21,7 @@ export default class App extends React.Component {
   setBgImage(val) {
     this.setState({
       imgName: val
-    }, function () {
-        this.handleResize();
-      });
+    }, () => this.handleResize());
   }
 
   handleResize(e = null) {
