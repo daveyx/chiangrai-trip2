@@ -5,10 +5,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './dev/index.js',
-  devtool: 'sourcemaps',
+  devtool: 'inline-source-map',
   cache: true,
   output: {
-    path: path.resolve(__dirname, '../resources/static/built'),
+    path: __dirname + '/../resources/static/built',
     filename: 'bundle.js',
     publicPath: '/'
   },
