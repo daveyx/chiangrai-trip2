@@ -1,6 +1,7 @@
 package de.bluexs.crtrip.persistence;
 
 import org.springframework.data.repository.Repository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 /**
  * 
@@ -8,10 +9,10 @@ import org.springframework.data.repository.Repository;
  * 
  */
 
+@RepositoryRestResource(exported = false)
 public interface IntroRepository extends Repository<Intro, Long> {
 
 	Intro findById(final Long id);
-
 	Intro save(Intro intro);
 
 }

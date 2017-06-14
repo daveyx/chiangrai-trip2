@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import lombok.Data;
 
 /**
@@ -15,6 +18,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@JsonInclude(Include.NON_NULL)
 public class Day {
 
 	private @Id @GeneratedValue Long id;

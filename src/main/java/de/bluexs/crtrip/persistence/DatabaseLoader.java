@@ -17,10 +17,12 @@ import org.springframework.stereotype.Component;
 public class DatabaseLoader implements CommandLineRunner {
 
 	private final DayRepository days;
+	private final IntroRepository intros;
 
 	@Autowired
-	public DatabaseLoader(final DayRepository dayRepository) {
+	public DatabaseLoader(final DayRepository dayRepository, final IntroRepository introRepository) {
 		this.days = dayRepository;
+		this.intros = introRepository;
 	}
 
 	@Override
@@ -49,12 +51,12 @@ public class DatabaseLoader implements CommandLineRunner {
 		final Day day1 = new Day("Trip to Chiang Rai with Jaae and David",
 				"<div id=\"author\" className=\"text-center\">by <a href=\"https://www.daveyx.ga\" title=\"daveyx\" target=\"_blank\">daveyx</a></div>",
 				"https://www.daveyx.ga/chiangrai-trip/img/maejaedee.jpg",
-				i1);
+				this.intros.save(i1));
 
-		final Day day2 = new Day("",
+		final Day day2 = new Day("Exploring Chiang Rai",
 				null,
 				"https://www.daveyx.ga/data/img/watrongkhun.jpg",
-				i2);
+				this.intros.save(i2));
 		
 		this.days.save(day1);
 		this.days.save(day2);

@@ -11,7 +11,8 @@ import org.springframework.data.repository.Repository;
 public interface DayRepository extends Repository<Day, Long> {
 
 	Day findById(final Long id);
-
+	Day findOne(Long id);
+	Iterable<Day> findAll();
 	Day save(Day day);
 
 }
