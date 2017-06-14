@@ -1,9 +1,8 @@
-'use strict';
-
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { useBasename } from 'history';
 import App from './containers/app.js';
+import DayWrapper from './containers/dayWrapper.js';
 
 export default class Routes extends React.Component {
   constructor(props) {
@@ -14,7 +13,7 @@ export default class Routes extends React.Component {
     return(
       <Router history={useBasename(() => browserHistory)({ basename: BASENAME })}>
         <Route path="/" component={App}>
-          <IndexRoute component={App} />
+          <IndexRoute component={DayWrapper} />
         </Route>
       </Router>
     )
