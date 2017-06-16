@@ -3,24 +3,22 @@ var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+var BUILD_DIR = path.resolve(__dirname, '../resources/static/built');
+
 module.exports = {
   entry: './dev/index.js',
+  devServer: {
+    inline: true,
+    contentBase: BUILD_DIR,
+    port: 3000
+  },
   devtool: 'inline-source-map',
   cache: true,
   output: {
-    path: __dirname + '/../resources/static/built',
+    path: BUILD_DIR,
     filename: 'bundle.js',
     publicPath: '/'
   },
-  plugins: [
-    new webpack.LoaderOptionsPlugin({
-      debug: true
-    }),
-    new ExtractTextPlugin('css/styles.css'),
-    new webpack.DefinePlugin({
-      BASENAME: JSON.stringify('/')
-    })
-  ],
   module: {
     loaders: [
       {
@@ -33,5 +31,14 @@ module.exports = {
         loader: ExtractTextPlugin.extract('css-loader')
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.LoaderOptionsPlugin({
+      debug: true
+    }),
+    new ExtractTextPlugin('css/styles.css'),
+    new webpack.DefinePlugin({
+      BASENAME: JSON.stringify('/')
+    })
+  ]
 };
