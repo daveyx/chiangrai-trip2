@@ -1,12 +1,5 @@
 /*@import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";*/
 
-/* Custom, iPhone Retina */
-@media only screen and (min-width : 320px) {
-  .home h1 {
-    font-size: 20px;
-    margin-top: 0;
-  }
-}
 @media (max-width: 767px) {
   .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4 {
     position: relative;
@@ -21,18 +14,8 @@
       min-height: 300px;
   }
 }
-/* Extra Small Devices, Phones */
-@media only screen and (min-width : 480px) {
-  .home h1 {
-    font-size: 36px;
-  }
-}
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
-  .home h1 {
-    font-size: 40px;
-    margin-top: 50px;
-  }
   .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4 {
   	position: relative;
   	opacity: 0.8;
@@ -47,13 +30,6 @@
       min-height: 300px;
   }
 
-}
-/* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px) {
-  .home h1 {
-    font-size: 52px;
-    margin-top: 80px;
-  }
 }
 
 div {
