@@ -30,7 +30,11 @@ export default class DayWrapper extends React.Component {
   }
 
   getData() {
-    axios.get('http://localhost:8080/api/days/1')
+    let day = '1';
+    if (typeof this.props.params.dayNumber !== 'undefined') {
+      day = Number(this.props.params.dayNumber) + 1;
+    }
+    axios.get('http://localhost:8080/api/days/' + day)
       .then(response => {
         this.setState({
           data: response.data

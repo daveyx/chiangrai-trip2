@@ -15,6 +15,7 @@ export default class Routes extends React.Component {
       <Router history={useBasename(() => browserHistory)({ basename: BASENAME })}>
         <Route path="/" component={App}>
           <IndexRoute component={DayWrapper} />
+          <Route path="day/:dayNumber" component={DayWrapper} />
         </Route>
       </Router>
     );
