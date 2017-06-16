@@ -49,21 +49,21 @@ export default class Day extends Component {
           <Col xs={12} sm={6} md={4}>
             <div className="zoom-effect-container">
               <div className="image-card">
-                <img src={this.props.data.introImages[0]} className="img-responsive center-block" />
+                <img src={this.props.data.intro.images[0]} className="img-responsive center-block" />
               </div>
             </div>
           </Col>
           <Col xs={12} sm={6} md={4}>
             <div className="zoom-effect-container">
               <div className="image-card">
-                <img src={this.props.data.introImages[1]} className="img-responsive center-block" />
+                <img src={this.props.data.intro.images[1]} className="img-responsive center-block" />
               </div>
             </div>
           </Col>
           <Col xs={12} sm={6} smOffset={3} md={4} mdOffset={0}>
             <div className="zoom-effect-container">
               <div className="image-card">
-                <img src={this.props.data.introImages[2]} className="img-responsive center-block" />
+                <img src={this.props.data.intro.images[2]} className="img-responsive center-block" />
               </div>
             </div>
           </Col>
