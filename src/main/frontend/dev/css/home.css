@@ -1,0 +1,106 @@
+/*@import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+  .home-h1 {
+    font-size: 20px;
+    margin-top: 0;
+  }
+  /*.content {
+    min-height: 110px;
+  }*/
+}
+@media (max-width: 767px) {
+  .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4 {
+    position: relative;
+    opacity: 0.8;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 20px;
+  }
+  .bgimg-1 {
+      background-image: url("https://www.daveyx.ga/chiangrai-trip/img/th-flag.jpg");
+      min-height: 300px;
+  }
+}
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+  .home-h1 {
+    font-size: 36px;
+  }
+}
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  .home-h1 {
+    font-size: 40px;
+    margin-top: 50px;
+  }
+  .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4 {
+  	position: relative;
+  	opacity: 0.8;
+  	background-attachment: fixed;
+  	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	margin-bottom: 20px;
+  }
+  .bgimg-1 {
+      background-image: url("https://www.daveyx.ga/chiangrai-trip/img/th-flag.jpg");
+      min-height: 300px;
+  }
+
+}
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  .home-h1 {
+    font-size: 52px;
+    margin-top: 80px;
+  }
+}
+
+div {
+  text-align: center;
+}
+
+.home-h1 {
+  font-weight: 800;
+}
+
+.content {
+  color: white;
+  padding: 20px;
+}
+
+.caption {
+    position: absolute;
+    left: 0;
+    top: 45%;
+    width: 70%;
+    text-align: center;
+    color: #000;
+    background-color: lightslategray;
+    margin-left: 15%;
+    margin-right: 15%;
+    font-family: 'Londrina Shadow';
+}
+
+.border {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: bolder;
+    letter-spacing: 5px;
+}
+.GMap {
+  position: relative;
+  width: 100%;
+}
+.GMap-canvas {
+  display: block;
+  width: 100%;
+  height: 50%;
+}
+.UpdatedText {
+  color: red;
+}
