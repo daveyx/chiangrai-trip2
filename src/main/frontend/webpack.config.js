@@ -39,6 +39,9 @@ module.exports = {
     new ExtractTextPlugin('css/styles.css'),
     new webpack.DefinePlugin({
       BASENAME: JSON.stringify('/')
+    }),
+    new HtmlWebpackPlugin({
+        template: 'dev/index.html'
     })
   ]
 };
