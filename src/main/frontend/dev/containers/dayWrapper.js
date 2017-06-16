@@ -1,5 +1,6 @@
 import React from 'react';
 import Day from '../components/day.js';
+import EmptyDay from '../components/emptyDay.js';
 import axios from 'axios';
 
 export default class DayWrapper extends React.Component {
@@ -40,17 +41,24 @@ export default class DayWrapper extends React.Component {
   }
 
   render() {
-    let pathname = 'day' + this.props.params.dayNumber;
+    let showDay = typeof this.props.params.dayNumber === 'undefined' || this.props.params.dayNumber === '1';
+    let content;
+    if (showDay && this.state.data !== null) {
+      content =
+      <Day
+        contentStyle={this.props.contentStyle}
+        data={this.state.data}
+        imgName={this.state.data.image}
+        setBgImage={this.props.setBgImage}
+      />;
+    } else {
+      content =
+        <EmptyDay />;
+    }
     return(
-          <div>
-          </div>
-        );
+      <div>
+        {content}
+      </div>
+    );
   }
 }
-//<Day
-//pathname={pathname}
-//contentStyle={this.props.contentStyle}
-//data={this.state.data.data}
-//imgName={this.state.data.imgName}
-//setBgImage={this.props.setBgImage}
-///>

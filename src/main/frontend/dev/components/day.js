@@ -45,7 +45,7 @@ export default class Day extends Component {
             <Row>
               <Col xs={12}>
                   <h1 className="text-center" style={this.state.h1Style}>
-                    {this.props.data.introHeader}
+                    {this.props.data.title}
                   </h1>
              </Col>
            </Row>
@@ -57,30 +57,9 @@ export default class Day extends Component {
                   <h2 className="text-center">{this.props.data.introHeader2}</h2>
                  </Col>
                 <Col xs={12}>
-                  {this.props.data.introBody.map(function(data, index){
+                  {this.props.data.intro.texts.map(function(data, index){
                     return <p key={index}>{data}</p>;
                   })}
-                </Col>
-                <Col xs={12} sm={6} md={4}>
-                  <div className="zoom-effect-container">
-                    <div className="image-card">
-                      <img src={this.props.data.introImages[0]} className="img-responsive center-block" />
-                    </div>
-                  </div>
-                </Col>
-                <Col xs={12} sm={6} md={4}>
-                  <div className="zoom-effect-container">
-                    <div className="image-card">
-                      <img src={this.props.data.introImages[1]} className="img-responsive center-block" />
-                    </div>
-                  </div>
-                </Col>
-                <Col xs={12} sm={6} smOffset={3} md={4} mdOffset={0}>
-                  <div className="zoom-effect-container">
-                    <div className="image-card">
-                      <img src={this.props.data.introImages[2]} className="img-responsive center-block" />
-                    </div>
-                  </div>
                 </Col>
               </Row>
             </Grid>
