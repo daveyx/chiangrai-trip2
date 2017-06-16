@@ -1,3 +1,4 @@
+/* global BASENAME */
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { useBasename } from 'history';
@@ -6,7 +7,7 @@ import DayWrapper from './containers/dayWrapper.js';
 
 export default class Routes extends React.Component {
   constructor(props) {
-    super();
+    super(props);
   }
 
   render() {
@@ -16,6 +17,6 @@ export default class Routes extends React.Component {
           <IndexRoute component={DayWrapper} />
         </Route>
       </Router>
-    )
+    );
   }
 }
