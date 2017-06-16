@@ -12,7 +12,7 @@ module.exports = {
     contentBase: BUILD_DIR,
     port: 3000
   },
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   cache: true,
   output: {
     path: BUILD_DIR,
