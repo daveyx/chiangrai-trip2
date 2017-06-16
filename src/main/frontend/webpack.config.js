@@ -16,11 +16,11 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       debug: true
     }),
-    new ExtractTextPlugin("css/styles.css"),
+    new ExtractTextPlugin('css/styles.css'),
     new webpack.DefinePlugin({
-      BASENAME: JSON.stringify("/")
+      BASENAME: JSON.stringify('/')
     })
-    ],
+  ],
   module: {
     loaders: [
       {
@@ -30,7 +30,7 @@ module.exports = {
       },
       {
         test: /\.css/,
-        loader: ExtractTextPlugin.extract("css-loader")
+        loader: ExtractTextPlugin.extract('css-loader')
       }
     ]
   }
