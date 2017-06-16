@@ -44,11 +44,13 @@ export default class DayWrapper extends React.Component {
   }
 
   render() {
+    let pageType = this.props.location.pathname === '/' ? 'content' : 'day';
     let showDay = typeof this.props.params.dayNumber === 'undefined' || this.props.params.dayNumber === '1';
     let content;
     if (showDay && this.state.data !== null) {
       content =
       <Day
+        pageType={pageType}
         contentStyle={this.props.contentStyle}
         data={this.state.data}
         imgName={this.state.data.image}

@@ -86,7 +86,7 @@ export default class Day extends Component {
 
     return (
         <main ref="content">
-          <Grid fluid ref="day" className="day" style={this.props.contentStyle}>
+          <Grid fluid ref="day" className={this.props.pageType} style={this.props.contentStyle}>
             <Row>
               <Col xs={12}>
                   <h1 className="text-center" style={this.state.h1Style}>
