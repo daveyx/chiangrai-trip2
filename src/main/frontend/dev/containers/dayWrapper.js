@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export default class DayWrapper extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       data: null
     };
