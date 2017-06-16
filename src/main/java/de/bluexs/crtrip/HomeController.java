@@ -11,7 +11,7 @@ public class HomeController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/test")
+	@RequestMapping(value = "/day/*")
 	public String test() {
 		return "index";
 	}
