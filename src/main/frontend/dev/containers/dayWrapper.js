@@ -29,18 +29,18 @@ export default class DayWrapper extends React.Component {
   }
 
   getData() {
-    axios.get("http://localhost:8080/api/days/1")
+    axios.get('http://localhost:8080/api/days/1')
       .then(response => {
         this.setState({
           data: response.data
         }, () => this.setBgImage());
     }).catch(function (error) {
-      console.log("error axios-get1: " + error);
+      console.log('error axios-get1: ' + error);
     });
   }
 
   render() {
-    let pathname = "day" + this.props.params.dayNumber;
+    let pathname = 'day' + this.props.params.dayNumber;
     return(
           <div>
           </div>
