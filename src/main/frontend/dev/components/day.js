@@ -5,7 +5,7 @@ import '../css/day.css';
 
 export default class Day extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       h1Style: {
         fontSize: '12px',
@@ -29,8 +29,8 @@ export default class Day extends Component {
     let h1MarginTop = Math.round(window.innerWidth / 16) + 10;
     this.setState({
       h1Style: {
-        fontSize: h1size + "px",
-        marginTop: h1MarginTop + "px"
+        fontSize: h1size + 'px',
+        marginTop: h1MarginTop + 'px'
       }
     });
   }
@@ -41,7 +41,7 @@ export default class Day extends Component {
 //    });
     return (
         <main ref="content">
-          <Grid fluid ref="day" className={'day ' + this.props.pathname} style={this.props.contentStyle}>
+          <Grid fluid ref="day" className="day" style={this.props.contentStyle}>
             <Row>
               <Col xs={12}>
                   <h1 className="text-center" style={this.state.h1Style}>
@@ -50,8 +50,6 @@ export default class Day extends Component {
              </Col>
            </Row>
           </Grid>
-          {this.props.pathname !== "day1" ? null
-          :
           <div>
             <Grid>
               <Row>
@@ -86,10 +84,10 @@ export default class Day extends Component {
                 </Col>
               </Row>
             </Grid>
-            
-            
-            
-            
+
+
+
+
             <Grid>
               <Row>
                 <Col xs={12}>
@@ -98,7 +96,6 @@ export default class Day extends Component {
               </Row>
             </Grid>
           </div>
-          }
         </main>
     );
   }
