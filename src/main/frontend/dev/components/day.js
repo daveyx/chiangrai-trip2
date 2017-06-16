@@ -43,6 +43,7 @@ export default class Day extends Component {
 
     let imageSection = null;
     let parallax = null;
+    let subTitle = null;
     if (this.props.data.intro.images.length === 3) {
       imageSection =
         <Row>
@@ -78,6 +79,11 @@ export default class Day extends Component {
           </div>
         </Grid>;
     }
+
+    if (this.props.data.subtitle) {
+      subTitle = <div id="author" className="text-center">by <a href="https://www.daveyx.ga" title="daveyx" target="_blank">daveyx</a></div>;
+    }
+
     return (
         <main ref="content">
           <Grid fluid ref="day" className="day" style={this.props.contentStyle}>
@@ -86,6 +92,7 @@ export default class Day extends Component {
                   <h1 className="text-center" style={this.state.h1Style}>
                     {this.props.data.title}
                   </h1>
+                  {subTitle}
              </Col>
            </Row>
           </Grid>
@@ -93,7 +100,7 @@ export default class Day extends Component {
             <Row>
               <Col xs={12}>
                 <h2 className="text-center">{this.props.data.intro.title}</h2>
-               </Col>
+              </Col>
               <Col xs={12}>
                 {this.props.data.intro.texts.map(function(data, index){
                   return <p key={index}>{data}</p>;
