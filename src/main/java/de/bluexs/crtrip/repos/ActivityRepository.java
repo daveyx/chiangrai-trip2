@@ -13,9 +13,11 @@ import de.bluexs.crtrip.persistence.Day;
  */
 
 public interface ActivityRepository extends Repository<Activity, Long> {
-	
-	Activity findByDay(final Day day);
 
+	Activity findById(final Long id);
+	Activity findOne(Long id);
+	Iterable<Activity> findAll();
+	
 	@PreAuthorize("hasAuthority('ADMIN')")
 	Activity save(Activity Activity);
 
