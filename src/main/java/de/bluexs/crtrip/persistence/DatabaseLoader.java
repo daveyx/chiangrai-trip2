@@ -10,6 +10,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
+import de.bluexs.crtrip.repos.ActivityLinkRepository;
 import de.bluexs.crtrip.repos.ActivityRepository;
 import de.bluexs.crtrip.repos.DayRepository;
 import de.bluexs.crtrip.repos.IntroRepository;
@@ -28,16 +29,19 @@ public class DatabaseLoader implements CommandLineRunner {
 	private final IntroRepository intros;
 	private final ManagerRepository managers;
 	private final ActivityRepository activities;
+	private final ActivityLinkRepository activityLinks;
 
 	@Autowired
 	public DatabaseLoader(final DayRepository dayRepository, 
 			final IntroRepository introRepository, 
 			final ManagerRepository managerRepository,
-			final ActivityRepository activityRepository) {
+			final ActivityRepository activityRepository,
+			final ActivityLinkRepository activityLinkRepository) {
 		this.days = dayRepository;
 		this.intros = introRepository;
 		this.managers = managerRepository;
 		this.activities = activityRepository;
+		this.activityLinks = activityLinkRepository;
 	}
 
 	@Override
@@ -101,6 +105,31 @@ public class DatabaseLoader implements CommandLineRunner {
 		this.activities.save(a11);
 		this.activities.save(a21);
 		this.activities.save(a22);
+		
+		final ActivityLink al111 = new ActivityLink(
+				"https://en.wikipedia.org/wiki/Wat_Rong_Khun",
+				"Wikipedia",
+				"Wanna know more about Wat Rong Khun? Checkout the entry at ",
+				". You can find interesting background information about the meaning of parts of the building, i.e. the bridge and the hands in front of the bridge.",
+				a11);
+		
+		final ActivityLink al211 = new ActivityLink(
+				"https://en.wikipedia.org/wiki/Wat_Rong_Khun",
+				"Wikipedia",
+				"Wanna know more about Wat Rong Khun? Checkout the entry at ",
+				". You can find interesting background information about the meaning of parts of the building, i.e. the bridge and the hands in front of the bridge.",
+				a21);
+		
+		final ActivityLink al212 = new ActivityLink(
+				"https://en.wikipedia.org/wiki/Wat_Rong_Khun",
+				"Wikipedia",
+				"Wanna know more about Wat Rong Khun? Checkout the entry at ",
+				". You can find interesting background information about the meaning of parts of the building, i.e. the bridge and the hands in front of the bridge.",
+				a22);
+		
+		this.activityLinks.save(al111);
+		this.activityLinks.save(al211);
+		this.activityLinks.save(al212);
 		
 		SecurityContextHolder.clearContext();
 	}
