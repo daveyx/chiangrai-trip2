@@ -8,7 +8,8 @@ export default class Activity extends React.Component {
   render() {
     return(
       <div>
-        an activity...
+        fille<br />
+        {this.props.val.title}
       </div>
     );
   }
