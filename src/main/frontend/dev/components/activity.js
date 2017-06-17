@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react';
 import {Grid, Row, Col} from 'react-bootstrap';
-// import GMap from './GoogleMaps';
+import GMap from './googleMaps';
 // import Gallery from './gallery.jsx'
 import '../css/activity.css';
 
@@ -30,7 +30,15 @@ export default class Activity extends Component {
     let content = ! this.props.activity ? null :
       <Row>
         <Col xs={12} md={6} mdPush={pullPushMd}>
-          google maps
+          {this.props.data.activity.position.coordinates.lng > 0 && this.props.data.activity.position.coordinates.lat > 0 ?
+          <div>
+            <h3>{this.props.data.activity.position.header}</h3>
+            <div className="map">
+              <GMap initialCenter={this.props.data.activity.position.coordinates} zoom={this.props.data.activity.position.zoom} />
+            </div>
+          </div>
+          : <p>Google Maps not available</p>
+          }
         </Col>
         <Col xs={12} md={6} mdPull={pullPushMd}>
           <h3>{this.props.activity.activityHeader2}</h3>
