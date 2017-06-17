@@ -26,9 +26,10 @@ export default class ActivitiesWrapper extends React.Component {
         this.setState({
           data: response.data
         });
-    }).catch(function (error) {
-      console.log('error axios-get activities: ' + error);
     });
+    // .catch(function (error) {
+    //   console.log('error axios-get activities: ' + error);
+    // });
   }
 
   render() {
@@ -37,7 +38,7 @@ export default class ActivitiesWrapper extends React.Component {
         <p>activities for day {this.props.day}</p>
         {
           this.state.data._embedded.activities.map((a, i) => {
-            return <Activity key={i} val={a}/>;
+            return <Activity key={i} activity={a}/>;
           })
         }
       </div>;
