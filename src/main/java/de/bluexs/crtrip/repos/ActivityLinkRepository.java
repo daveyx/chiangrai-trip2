@@ -12,7 +12,7 @@ import de.bluexs.crtrip.persistence.ActivityLink;
  */
 
 @RepositoryRestResource(exported = false)
-public interface ActivityLinkRepository  extends Repository<ActivityLink, Long>{
+public interface ActivityLinkRepository extends Repository<ActivityLink, Long>{
 
 	ActivityLink save(ActivityLink link);
 
