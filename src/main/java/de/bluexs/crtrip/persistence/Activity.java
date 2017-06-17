@@ -7,6 +7,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -33,7 +34,10 @@ public class Activity {
 	@ElementCollection(targetClass=String.class)
 	@Column(length=10000)
 	private List<String> texts;
-	private @ManyToOne Day day;
+	
+	@ManyToOne
+	@JoinColumn(name="day_id")
+	private Day day;
 
 	public Activity(final String title, final String subtitle, final List<String> texts, final Day day) {
 		this.title = title;
