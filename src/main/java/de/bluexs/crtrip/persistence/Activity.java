@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -42,7 +43,10 @@ public class Activity {
 	@ManyToOne
 	@JoinColumn(name="day_id")
 	private Day day;
-
+	
+	@OneToMany(mappedBy = "activity")
+    private List<ActivityLink> activityLinks;
+	
 	public Activity(final String title, final String subtitle, final List<String> texts, final Day day) {
 		this.title = title;
 		this.subtitle = subtitle;
