@@ -27,6 +27,8 @@ export default class Activity extends Component {
       bgColor = 'bg-white';
     }
 
+    console.log(this.props.activity.activityLinks)
+
     let content = ! this.props.activity ? null :
       <Row>
         <Col xs={12} md={6} mdPush={pullPushMd}>
@@ -37,6 +39,15 @@ export default class Activity extends Component {
           {this.props.activity.texts.map(function(data, index){
             return <p key={index}>{data}</p>;
           })}
+         {this.props.activity.activityLinks.map(function(data, index){
+           return <p key={index}>
+               {data.linkDescLeft}
+               <a href={data.link} target="_blank">
+                 {data.linkText}
+               </a>
+               {data.linkDescRight}
+             </p>;
+         })}
         </Col>
       </Row>;
 
