@@ -3,6 +3,12 @@ package de.bluexs.crtrip;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * 
+ * @author daveyx
+ * 
+ */
+
 @Controller
 public class HomeController {
 
