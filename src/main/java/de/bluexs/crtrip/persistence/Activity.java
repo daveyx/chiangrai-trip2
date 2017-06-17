@@ -28,9 +28,13 @@ import lombok.NoArgsConstructor;
 @JsonInclude(Include.NON_NULL)
 public class Activity {
 
-	private @Id @GeneratedValue Long id;
+	@Id
+	@GeneratedValue
+	private Long id;
+	
 	private String title;
 	private String subtitle;
+	
 	@ElementCollection(targetClass=String.class)
 	@Column(length=10000)
 	private List<String> texts;
