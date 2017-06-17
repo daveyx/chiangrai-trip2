@@ -63,14 +63,6 @@ public class DatabaseLoader implements CommandLineRunner {
 				new ArrayList<String>(Arrays.asList("https://www.daveyx.ga/data/chiangraitrip/day1/watrongkhun.jpg", 
 						"https://www.daveyx.ga/data/chiangraitrip/day1/singhapark.jpg",
 						"https://www.daveyx.ga/data/chiangraitrip/day1/phrathatchomsithep.jpg")));
-
-		final Activity a11 = new Activity("เชียงราย - Chiang Rai",
-				"About Chiang Rai",
-				new ArrayList<String>(Arrays.asList("The Chiang Rai province is the northernmost province in Thailand. The province has borders to Mayanmar and Laos. Very popular is the Golden Triangle, where the three countries Thailand, Myanmar and Laos meet at the Mekong River.", "Chiang Rai city is the northernmost large city in Thailand.", "The nature in Chiang Rai province is amazing! A lot of mountains, beautiful landscape, lakes, nice temples and awesome waterfalls.", "Chiang Rai is not as busy as Chiang Mai and has many quiet places and nice people everywhere.")));
-		
-		final Activity a21 = new Activity("Wat Rong Khun - วัดร่องขุ่น - The White Temple",
-				"About Wat Rong Khun",
-				new ArrayList<String>(Arrays.asList("By the end of the 20th century, the original Wat Rong Khun was in a bad state of repair. Funds were not available for renovation. Chalermchai Kositpipat, a local artist from Chiang Rai, decided to completely rebuild the temple and fund the project with his own money.", "Nowadays this beautiful area is a tourist magnet and at least the white building is a bit crowded by  people. But nevertheless it is worth a visit if you've never been there.", "We first checked out the garden, then moved to the main building and experienced the rest of the area afterwards. Soon i got uncomfortable with the many people and we went back near our car and found a small nice Café for rest.", "For Thai people free, foreigners must pay 50 Baht entrance fee.")));
 		
 		final Day day1 = new Day("Trip to Chiang Rai with Jaae and David",
 				"<div id=\"author\" className=\"text-center\">by <a href=\"https://www.daveyx.ga\" title=\"daveyx\" target=\"_blank\">daveyx</a></div>",
@@ -85,6 +77,16 @@ public class DatabaseLoader implements CommandLineRunner {
 		this.days.save(day1);
 		this.days.save(day2);
 
+		final Activity a11 = new Activity("เชียงราย - Chiang Rai",
+				"About Chiang Rai",
+				new ArrayList<String>(Arrays.asList("The Chiang Rai province is the northernmost province in Thailand. The province has borders to Mayanmar and Laos. Very popular is the Golden Triangle, where the three countries Thailand, Myanmar and Laos meet at the Mekong River.", "Chiang Rai city is the northernmost large city in Thailand.", "The nature in Chiang Rai province is amazing! A lot of mountains, beautiful landscape, lakes, nice temples and awesome waterfalls.", "Chiang Rai is not as busy as Chiang Mai and has many quiet places and nice people everywhere.")),
+				day1);
+		
+		final Activity a21 = new Activity("Wat Rong Khun - วัดร่องขุ่น - The White Temple",
+				"About Wat Rong Khun",
+				new ArrayList<String>(Arrays.asList("By the end of the 20th century, the original Wat Rong Khun was in a bad state of repair. Funds were not available for renovation. Chalermchai Kositpipat, a local artist from Chiang Rai, decided to completely rebuild the temple and fund the project with his own money.", "Nowadays this beautiful area is a tourist magnet and at least the white building is a bit crowded by  people. But nevertheless it is worth a visit if you've never been there.", "We first checked out the garden, then moved to the main building and experienced the rest of the area afterwards. Soon i got uncomfortable with the many people and we went back near our car and found a small nice Café for rest.", "For Thai people free, foreigners must pay 50 Baht entrance fee.")),
+				day2);
+		
 		SecurityContextHolder.clearContext();
 	}
 }
