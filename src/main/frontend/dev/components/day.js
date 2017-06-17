@@ -112,6 +112,7 @@ export default class Day extends Component {
             {imageSection}
           </Grid>
           {parallax}
+          {this.props.activities}
           <Grid>
             <Row>
               <Col xs={12}>

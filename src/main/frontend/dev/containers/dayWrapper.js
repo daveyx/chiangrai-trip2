@@ -1,6 +1,7 @@
 import React from 'react';
 import Day from '../components/day.js';
 import EmptyDay from '../components/emptyDay.js';
+import ActivitiesWrapper from './activitiesWrapper.js';
 import axios from 'axios';
 
 export default class DayWrapper extends React.Component {
@@ -48,6 +49,8 @@ export default class DayWrapper extends React.Component {
     let showDay = typeof this.props.params.dayNumber === 'undefined' || this.props.params.dayNumber === '1';
     let content;
     if (showDay && this.state.data !== null) {
+      const dayNumber = this.props.location.pathname === '/' ? 0 : this.props.params.dayNumber;
+      const activities = <ActivitiesWrapper day={dayNumber} />;
       content =
       <Day
         pageType={pageType}
@@ -55,6 +58,7 @@ export default class DayWrapper extends React.Component {
         data={this.state.data}
         imgName={this.state.data.image}
         setBgImage={this.props.setBgImage}
+        activities={activities}
       />;
     } else {
       content =
