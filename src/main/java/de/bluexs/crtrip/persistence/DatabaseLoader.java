@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import de.bluexs.crtrip.repos.ActivityLinkRepository;
 import de.bluexs.crtrip.repos.ActivityRepository;
 import de.bluexs.crtrip.repos.DayRepository;
+import de.bluexs.crtrip.repos.GMapRepository;
 import de.bluexs.crtrip.repos.IntroRepository;
 import de.bluexs.crtrip.repos.ManagerRepository;
 
@@ -30,18 +31,21 @@ public class DatabaseLoader implements CommandLineRunner {
 	private final ManagerRepository managers;
 	private final ActivityRepository activities;
 	private final ActivityLinkRepository activityLinks;
+	private final GMapRepository gMaps;
 
 	@Autowired
 	public DatabaseLoader(final DayRepository dayRepository, 
 			final IntroRepository introRepository, 
 			final ManagerRepository managerRepository,
 			final ActivityRepository activityRepository,
-			final ActivityLinkRepository activityLinkRepository) {
+			final ActivityLinkRepository activityLinkRepository,
+			final GMapRepository gMapRepository) {
 		this.days = dayRepository;
 		this.intros = introRepository;
 		this.managers = managerRepository;
 		this.activities = activityRepository;
 		this.activityLinks = activityLinkRepository;
+		this.gMaps = gMapRepository;
 	}
 
 	@Override
@@ -86,20 +90,31 @@ public class DatabaseLoader implements CommandLineRunner {
 		
 		this.days.save(day1);
 		this.days.save(day2);
-
+		
+		final GMap gm11 = new GMap("Chiang Rai in Google Maps", "99.8325", "19.90858", "8");
+		final GMap gm21 = new GMap("Chiang Rai in Google Maps", "99.8325", "19.90858", "8");
+		final GMap gm22 = new GMap("Chiang Rai in Google Maps", "99.8325", "19.90858", "8");
+		
+		this.gMaps.save(gm11);
+		this.gMaps.save(gm21);
+		this.gMaps.save(gm22);
+		
 		final Activity a11 = new Activity("เชียงราย - Chiang Rai",
 				"About Chiang Rai",
 				new ArrayList<String>(Arrays.asList("The Chiang Rai province is the northernmost province in Thailand. The province has borders to Mayanmar and Laos. Very popular is the Golden Triangle, where the three countries Thailand, Myanmar and Laos meet at the Mekong River.", "Chiang Rai city is the northernmost large city in Thailand.", "The nature in Chiang Rai province is amazing! A lot of mountains, beautiful landscape, lakes, nice temples and awesome waterfalls.", "Chiang Rai is not as busy as Chiang Mai and has many quiet places and nice people everywhere.")),
+				gm11,
 				day1);
 		
 		final Activity a21 = new Activity("Wat Rong Khun - วัดร่องขุ่น - The White Temple",
 				"About Wat Rong Khun",
 				new ArrayList<String>(Arrays.asList("By the end of the 20th century, the original Wat Rong Khun was in a bad state of repair. Funds were not available for renovation. Chalermchai Kositpipat, a local artist from Chiang Rai, decided to completely rebuild the temple and fund the project with his own money.", "Nowadays this beautiful area is a tourist magnet and at least the white building is a bit crowded by  people. But nevertheless it is worth a visit if you've never been there.", "We first checked out the garden, then moved to the main building and experienced the rest of the area afterwards. Soon i got uncomfortable with the many people and we went back near our car and found a small nice Café for rest.", "For Thai people free, foreigners must pay 50 Baht entrance fee.")),
+				gm21,
 				day2);
 		
 		final Activity a22 = new Activity("activity 22",
 				"About activity 22",
 				new ArrayList<String>(Arrays.asList("By the end of the 20th century, the original Wat Rong Khun was in a bad state of repair. Funds were not available for renovation. Chalermchai Kositpipat, a local artist from Chiang Rai, decided to completely rebuild the temple and fund the project with his own money.", "Nowadays this beautiful area is a tourist magnet and at least the white building is a bit crowded by  people. But nevertheless it is worth a visit if you've never been there.", "We first checked out the garden, then moved to the main building and experienced the rest of the area afterwards. Soon i got uncomfortable with the many people and we went back near our car and found a small nice Café for rest.", "For Thai people free, foreigners must pay 50 Baht entrance fee.")),
+				gm22,
 				day2);
 		
 		this.activities.save(a11);
