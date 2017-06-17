@@ -21,13 +21,11 @@ export default class Activity extends Component {
     let pullPushMd = 0;
     let pullPushXs = 0;
     let bgColor = 'bg-light-grey';
-    if ((activityId+1) % 2 > 0) {
+    if ((activityId + 1) % 2 > 0) {
       pullPushMd = 6;
       pullPushXs = 12;
       bgColor = 'bg-white';
     }
-
-    console.log(this.props.activity.activityLinks)
 
     let content = ! this.props.activity ? null :
       <Row>
@@ -39,13 +37,13 @@ export default class Activity extends Component {
           {this.props.activity.texts.map(function(data, index){
             return <p key={index}>{data}</p>;
           })}
-         {this.props.activity.activityLinks.map(function(data, index){
-           return <p key={index}>
-               {data.linkDescLeft}
-               <a href={data.link} target="_blank">
-                 {data.linkText}
-               </a>
-               {data.linkDescRight}
+          {this.props.activity.activityLinks.map(function(data, index){
+            return <p key={index}>
+              {data.linkDescLeft}
+              <a href={data.link} target="_blank">
+                {data.linkText}
+              </a>
+              {data.linkDescRight}
              </p>;
          })}
         </Col>
