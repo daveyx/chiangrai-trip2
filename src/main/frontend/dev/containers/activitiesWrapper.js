@@ -11,7 +11,10 @@ export default class ActivitiesWrapper extends React.Component {
 
   render() {
     return(
-      <div>activities for day {this.props.day}</div>
+      <div>
+        activities for day {this.props.day}
+        <Activity />
+      </div>
     );
   }
 }
