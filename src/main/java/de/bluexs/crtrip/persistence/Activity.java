@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 
@@ -22,6 +23,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@NoArgsConstructor
 @JsonInclude(Include.NON_NULL)
 public class Activity {
 
@@ -32,9 +34,6 @@ public class Activity {
 	@Column(length=10000)
 	private List<String> texts;
 	private @ManyToOne Day day;
-	
-	@SuppressWarnings("unused")
-	private Activity() {}
 
 	public Activity(final String title, final String subtitle, final List<String> texts, final Day day) {
 		this.title = title;

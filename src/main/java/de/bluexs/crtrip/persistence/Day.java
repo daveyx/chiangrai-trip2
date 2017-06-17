@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 
@@ -18,6 +19,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@NoArgsConstructor
 @JsonInclude(Include.NON_NULL)
 public class Day {
 
@@ -27,9 +29,6 @@ public class Day {
 	private String image;
 	@OneToOne
 	private Intro intro;
-	
-	@SuppressWarnings("unused")
-	private Day() {}
 
 	public Day(final String title, final String subtitle, final String image, final Intro intro) {
 		this.title = title;

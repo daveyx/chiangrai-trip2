@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 
@@ -21,6 +22,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@NoArgsConstructor
 @JsonInclude(Include.NON_NULL)
 public class Intro {
 
@@ -34,9 +36,6 @@ public class Intro {
 	@ElementCollection(targetClass=String.class)
 	@Column(length=10000)
 	private List<String> images;
-	
-	@SuppressWarnings("unused")
-	private Intro() {}
 
 	public Intro(final String title, final List<String> texts, final String image, final String imageText, final List<String> images) {
 		this.title = title;
