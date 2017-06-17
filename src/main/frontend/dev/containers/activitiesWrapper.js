@@ -35,7 +35,6 @@ export default class ActivitiesWrapper extends React.Component {
   render() {
     const activities = ! this.state.data ? null :
       <div>
-        <p>activities for day {this.props.day}</p>
         {
           this.state.data._embedded.activities.map((a, i) => {
             return <Activity key={i} activity={a}/>;
