@@ -10,6 +10,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
+import de.bluexs.crtrip.repos.ActivityRepository;
 import de.bluexs.crtrip.repos.DayRepository;
 import de.bluexs.crtrip.repos.IntroRepository;
 import de.bluexs.crtrip.repos.ManagerRepository;
@@ -26,12 +27,17 @@ public class DatabaseLoader implements CommandLineRunner {
 	private final DayRepository days;
 	private final IntroRepository intros;
 	private final ManagerRepository managers;
+	private final ActivityRepository activities;
 
 	@Autowired
-	public DatabaseLoader(final DayRepository dayRepository, final IntroRepository introRepository, final ManagerRepository managerRepository) {
+	public DatabaseLoader(final DayRepository dayRepository, 
+			final IntroRepository introRepository, 
+			final ManagerRepository managerRepository,
+			final ActivityRepository activityRepository) {
 		this.days = dayRepository;
 		this.intros = introRepository;
 		this.managers = managerRepository;
+		this.activities = activityRepository;
 	}
 
 	@Override
@@ -86,6 +92,9 @@ public class DatabaseLoader implements CommandLineRunner {
 				"About Wat Rong Khun",
 				new ArrayList<String>(Arrays.asList("By the end of the 20th century, the original Wat Rong Khun was in a bad state of repair. Funds were not available for renovation. Chalermchai Kositpipat, a local artist from Chiang Rai, decided to completely rebuild the temple and fund the project with his own money.", "Nowadays this beautiful area is a tourist magnet and at least the white building is a bit crowded by  people. But nevertheless it is worth a visit if you've never been there.", "We first checked out the garden, then moved to the main building and experienced the rest of the area afterwards. Soon i got uncomfortable with the many people and we went back near our car and found a small nice Café for rest.", "For Thai people free, foreigners must pay 50 Baht entrance fee.")),
 				day2);
+		
+		this.activities.save(a11);
+		this.activities.save(a21);
 		
 		SecurityContextHolder.clearContext();
 	}
