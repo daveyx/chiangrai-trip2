@@ -5,6 +5,7 @@ import '../css/gallery.css';
 export default class Gallery extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props.images)
   }
 
   handleImageLoad(event) {

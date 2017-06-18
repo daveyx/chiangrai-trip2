@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import {Grid, Row, Col} from 'react-bootstrap';
 import GMap from './googleMaps';
-// import Gallery from './gallery.jsx'
+import Gallery from './gallery.js';
 import '../css/activity.css';
 import '../css/gmap.css';
 
@@ -74,6 +74,19 @@ export default class Activity extends Component {
         </Col>
       </Row>;
 
+    const images = [
+      {
+          'original': 'https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg',
+          'thumbnail': 'https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg',
+          'description': 'We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage.'
+        },
+        {
+          'original': 'https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg',
+          'thumbnail': 'https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg',
+          'description': 'As you can see, only one luggage was enough for us two... Any comments?'
+        }
+    ];
+
     return (
       <div className={bgColor}>
         <Grid>
@@ -85,7 +98,8 @@ export default class Activity extends Component {
         {content}
         <Row>
           <Col xs={12}>
-            gallery
+            <p>(click on the bottom right for full screen mode)<br />(click the 'play' button on the bottom left for a image show)</p>
+            <Gallery images={images} />
           </Col>
         </Row>
         </Grid>
