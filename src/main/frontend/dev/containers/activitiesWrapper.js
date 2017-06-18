@@ -37,7 +37,7 @@ export default class ActivitiesWrapper extends React.Component {
       <div>
         {
           this.state.data._embedded.activities.map((a, i) => {
-            return <Activity key={i} activity={a}/>;
+            return <Activity key={i} activity={a} />;
           })
         }
       </div>;
