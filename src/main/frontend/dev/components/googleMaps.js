@@ -1,3 +1,5 @@
+/* global google */
+
 import React from 'react';
 import MapStyles from './mapStyles';
 import Script from 'react-load-script';
