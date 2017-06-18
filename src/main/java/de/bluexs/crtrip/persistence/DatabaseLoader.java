@@ -2,6 +2,7 @@ package de.bluexs.crtrip.persistence;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,6 +15,7 @@ import de.bluexs.crtrip.repos.ActivityLinkRepository;
 import de.bluexs.crtrip.repos.ActivityRepository;
 import de.bluexs.crtrip.repos.DayRepository;
 import de.bluexs.crtrip.repos.GMapRepository;
+import de.bluexs.crtrip.repos.GallaryImageRepository;
 import de.bluexs.crtrip.repos.IntroRepository;
 import de.bluexs.crtrip.repos.ManagerRepository;
 
@@ -32,6 +34,7 @@ public class DatabaseLoader implements CommandLineRunner {
 	private final ActivityRepository activities;
 	private final ActivityLinkRepository activityLinks;
 	private final GMapRepository gMaps;
+	private final GallaryImageRepository images;
 
 	@Autowired
 	public DatabaseLoader(final DayRepository dayRepository, 
@@ -39,13 +42,15 @@ public class DatabaseLoader implements CommandLineRunner {
 			final ManagerRepository managerRepository,
 			final ActivityRepository activityRepository,
 			final ActivityLinkRepository activityLinkRepository,
-			final GMapRepository gMapRepository) {
+			final GMapRepository gMapRepository,
+			final GallaryImageRepository gallaryImageRepository) {
 		this.days = dayRepository;
 		this.intros = introRepository;
 		this.managers = managerRepository;
 		this.activities = activityRepository;
 		this.activityLinks = activityLinkRepository;
 		this.gMaps = gMapRepository;
+		this.images = gallaryImageRepository;
 	}
 
 	@Override
@@ -99,22 +104,55 @@ public class DatabaseLoader implements CommandLineRunner {
 		this.gMaps.save(gm21);
 		this.gMaps.save(gm22);
 		
+		final List<GallaryImage> gi11 = new ArrayList<GallaryImage>();
+		gi11.add(new GallaryImage(
+					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
+				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
+				    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage."));
+		gi11.add(new GallaryImage(
+					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
+				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
+				    "As you can see, only one luggage was enough for us two... Any comments?"));
+		
+		final List<GallaryImage> gi21 = new ArrayList<GallaryImage>();
+		gi21.add(new GallaryImage(
+					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
+				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
+				    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage."));
+		gi21.add(new GallaryImage(
+					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
+				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
+				    "As you can see, only one luggage was enough for us two... Any comments?"));
+		
+		final List<GallaryImage> gi22 = new ArrayList<GallaryImage>();
+		gi22.add(new GallaryImage(
+					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
+				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
+				    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage."));
+		gi22.add(new GallaryImage(
+					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
+				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
+				    "As you can see, only one luggage was enough for us two... Any comments?"));
+		
 		final Activity a11 = new Activity("เชียงราย - Chiang Rai",
 				"About Chiang Rai",
 				new ArrayList<String>(Arrays.asList("The Chiang Rai province is the northernmost province in Thailand. The province has borders to Mayanmar and Laos. Very popular is the Golden Triangle, where the three countries Thailand, Myanmar and Laos meet at the Mekong River.", "Chiang Rai city is the northernmost large city in Thailand.", "The nature in Chiang Rai province is amazing! A lot of mountains, beautiful landscape, lakes, nice temples and awesome waterfalls.", "Chiang Rai is not as busy as Chiang Mai and has many quiet places and nice people everywhere.")),
 				gm11,
+				gi11,
 				day1);
 		
 		final Activity a21 = new Activity("Wat Rong Khun - วัดร่องขุ่น - The White Temple",
 				"About Wat Rong Khun",
 				new ArrayList<String>(Arrays.asList("By the end of the 20th century, the original Wat Rong Khun was in a bad state of repair. Funds were not available for renovation. Chalermchai Kositpipat, a local artist from Chiang Rai, decided to completely rebuild the temple and fund the project with his own money.", "Nowadays this beautiful area is a tourist magnet and at least the white building is a bit crowded by  people. But nevertheless it is worth a visit if you've never been there.", "We first checked out the garden, then moved to the main building and experienced the rest of the area afterwards. Soon i got uncomfortable with the many people and we went back near our car and found a small nice Café for rest.", "For Thai people free, foreigners must pay 50 Baht entrance fee.")),
 				gm21,
+				gi21,
 				day2);
 		
 		final Activity a22 = new Activity("activity 22",
 				"About activity 22",
 				new ArrayList<String>(Arrays.asList("By the end of the 20th century, the original Wat Rong Khun was in a bad state of repair. Funds were not available for renovation. Chalermchai Kositpipat, a local artist from Chiang Rai, decided to completely rebuild the temple and fund the project with his own money.", "Nowadays this beautiful area is a tourist magnet and at least the white building is a bit crowded by  people. But nevertheless it is worth a visit if you've never been there.", "We first checked out the garden, then moved to the main building and experienced the rest of the area afterwards. Soon i got uncomfortable with the many people and we went back near our car and found a small nice Café for rest.", "For Thai people free, foreigners must pay 50 Baht entrance fee.")),
 				gm22,
+				gi22,
 				day2);
 		
 		this.activities.save(a11);

@@ -39,11 +39,9 @@ public class GallaryImage {
 	public GallaryImage(
 			final String original, 
 			final String thumbnail, 
-			final String description,
-			final Activity activity) {
+			final String description) {
 		this.original = original;
 		this.thumbnail = thumbnail;
 		this.description = description;
-		this.activity = activity;
 	}
 }
