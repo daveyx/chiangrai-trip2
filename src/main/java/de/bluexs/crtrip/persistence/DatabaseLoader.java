@@ -92,9 +92,9 @@ public class DatabaseLoader implements CommandLineRunner {
 		this.days.save(day2);
 		
 		final GMap gm11 = new GMap("Chiang Rai in Google Maps", "99.8325", "19.90858", "8");
-		final GMap gm21 = new GMap("Chiang Rai in Google Maps", "99.8325", "19.90858", "8");
-		final GMap gm22 = new GMap("Chiang Rai in Google Maps", "99.8325", "19.90858", "8");
-		
+		final GMap gm21 = new GMap("Chiang Rai in Google Maps", "99.7629538", "19.8240748", "17");
+		final GMap gm22 = new GMap("Chiang Rai in Google Maps", "99.7433744", "19.8529981", "15");
+
 		this.gMaps.save(gm11);
 		this.gMaps.save(gm21);
 		this.gMaps.save(gm22);
