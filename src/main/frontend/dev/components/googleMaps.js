@@ -39,11 +39,9 @@ export default class GMap extends React.Component {
     this.state = {
       center: null
     };
-    console.log('maps ctor', this.props.id);
   }
 
   loadMap() {
-    console.log('in loadMap()', this.state.scriptLoaded);
     const {config} = this.props;
     if (this.state.scriptLoaded || this.props.id > 1) {
       if (config && config.snapToUserLocation && navigator.geolocation) {
@@ -55,7 +53,6 @@ export default class GMap extends React.Component {
       }
       // create the map and markers after the component has
       // been rendered because we need to manipulate the DOM for Google =(
-      console.log('go to createMap()', this.props.id);
       this.map = this.createMap(config.initialCenter);
       if (config && config.markers) {
         this.markers = this.createMarkers(config.markers);
@@ -98,7 +95,6 @@ export default class GMap extends React.Component {
       mapOptions.styles = MapStyles(config.colors);
       mapOptions.mapTypeId = 'terrain';
     }
-    console.log('calling google', this.props.id, this.refs['mapCanvas' + this.props.id]);
     return new google.maps.Map(this.refs['mapCanvas' + this.props.id], mapOptions);
   }
 
@@ -191,7 +187,6 @@ export default class GMap extends React.Component {
   }
 
   render() {
-    console.log('gmaps render', this.props.id, this.props.config.initialCenter.lat, this.props.config.initialCenter.lng);
     let url = "http://maps.googleapis.com/maps/api/js?key=" + "AIzaSyBS2QFArW3U4BJ6ocIVXEz65liph1jiVuk"
     return (
       <div className={'GMap map' + this.props.id}>
