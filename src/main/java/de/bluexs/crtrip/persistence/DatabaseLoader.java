@@ -15,7 +15,7 @@ import de.bluexs.crtrip.repos.ActivityLinkRepository;
 import de.bluexs.crtrip.repos.ActivityRepository;
 import de.bluexs.crtrip.repos.DayRepository;
 import de.bluexs.crtrip.repos.GMapRepository;
-import de.bluexs.crtrip.repos.GallaryImageRepository;
+import de.bluexs.crtrip.repos.GalleryImageRepository;
 import de.bluexs.crtrip.repos.IntroRepository;
 import de.bluexs.crtrip.repos.ManagerRepository;
 
@@ -34,7 +34,7 @@ public class DatabaseLoader implements CommandLineRunner {
 	private final ActivityRepository activities;
 	private final ActivityLinkRepository activityLinks;
 	private final GMapRepository gMaps;
-	private final GallaryImageRepository images;
+	private final GalleryImageRepository images;
 
 	@Autowired
 	public DatabaseLoader(final DayRepository dayRepository, 
@@ -43,14 +43,14 @@ public class DatabaseLoader implements CommandLineRunner {
 			final ActivityRepository activityRepository,
 			final ActivityLinkRepository activityLinkRepository,
 			final GMapRepository gMapRepository,
-			final GallaryImageRepository gallaryImageRepository) {
+			final GalleryImageRepository galleryImageRepository) {
 		this.days = dayRepository;
 		this.intros = introRepository;
 		this.managers = managerRepository;
 		this.activities = activityRepository;
 		this.activityLinks = activityLinkRepository;
 		this.gMaps = gMapRepository;
-		this.images = gallaryImageRepository;
+		this.images = galleryImageRepository;
 	}
 
 	@Override
@@ -104,32 +104,32 @@ public class DatabaseLoader implements CommandLineRunner {
 		this.gMaps.save(gm21);
 		this.gMaps.save(gm22);
 		
-		final List<GallaryImage> gi11 = new ArrayList<GallaryImage>();
-		gi11.add(new GallaryImage(
+		final List<GalleryImage> gi11 = new ArrayList<GalleryImage>();
+		gi11.add(new GalleryImage(
 					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
 				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
 				    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage."));
-		gi11.add(new GallaryImage(
+		gi11.add(new GalleryImage(
 					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
 				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
 				    "As you can see, only one luggage was enough for us two... Any comments?"));
 		
-		final List<GallaryImage> gi21 = new ArrayList<GallaryImage>();
-		gi21.add(new GallaryImage(
+		final List<GalleryImage> gi21 = new ArrayList<GalleryImage>();
+		gi21.add(new GalleryImage(
 					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
 				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
 				    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage."));
-		gi21.add(new GallaryImage(
+		gi21.add(new GalleryImage(
 					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
 				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
 				    "As you can see, only one luggage was enough for us two... Any comments?"));
 		
-		final List<GallaryImage> gi22 = new ArrayList<GallaryImage>();
-		gi22.add(new GallaryImage(
+		final List<GalleryImage> gi22 = new ArrayList<GalleryImage>();
+		gi22.add(new GalleryImage(
 					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
 				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
 				    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage."));
-		gi22.add(new GallaryImage(
+		gi22.add(new GalleryImage(
 					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
 				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
 				    "As you can see, only one luggage was enough for us two... Any comments?"));

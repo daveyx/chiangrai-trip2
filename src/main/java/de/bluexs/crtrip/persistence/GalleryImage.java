@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @JsonInclude(Include.NON_NULL)
-public class GallaryImage {
+public class GalleryImage {
 
 	@Id
 	@GeneratedValue
@@ -36,7 +36,7 @@ public class GallaryImage {
 	@JoinColumn(name="activity_id")
 	private Activity activity;
 	
-	public GallaryImage(
+	public GalleryImage(
 			final String original, 
 			final String thumbnail, 
 			final String description) {

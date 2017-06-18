@@ -42,7 +42,7 @@ public class Activity {
 	private List<String> texts;
 	
 	@OneToMany(mappedBy = "activity")
-    private List<GallaryImage> gallary;
+    private List<GalleryImage> gallery;
 	
 	@OneToOne
 	private GMap gMap;
@@ -59,13 +59,13 @@ public class Activity {
 			final String subtitle, 
 			final List<String> texts, 
 			final GMap gMap,
-			final List<GallaryImage> images,
+			final List<GalleryImage> images,
 			final Day day) {
 		this.title = title;
 		this.subtitle = subtitle;
 		this.texts = texts;
 		this.gMap = gMap;
-		this.gallary = images;
+		this.gallery = images;
 		this.day = day;
 	}
 

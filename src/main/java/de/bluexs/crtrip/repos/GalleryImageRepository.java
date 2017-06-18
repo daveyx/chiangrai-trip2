@@ -3,7 +3,7 @@ package de.bluexs.crtrip.repos;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import de.bluexs.crtrip.persistence.GallaryImage;
+import de.bluexs.crtrip.persistence.GalleryImage;
 
 /**
  * 
@@ -12,10 +12,10 @@ import de.bluexs.crtrip.persistence.GallaryImage;
  */
 
 @RepositoryRestResource(exported = false)
-public interface GallaryImageRepository extends Repository<GallaryImage, Long>{
+public interface GalleryImageRepository extends Repository<GalleryImage, Long>{
 
-	GallaryImage save(final GallaryImage image);
+	GalleryImage save(final GalleryImage image);
 
-	GallaryImage findById(final Long id);
+	GalleryImage findById(final Long id);
 	
 }
