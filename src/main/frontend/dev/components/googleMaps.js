@@ -19,7 +19,7 @@ export default class GMap extends React.Component {
         })),
         snapToUserLocation: PropTypes.bool
       })
-    }
+    };
   }
 
   static get defaultProps() {
@@ -31,7 +31,7 @@ export default class GMap extends React.Component {
         },
         initialZoom: 10
       }
-    }
+    };
   }
 
   constructor(props){
@@ -49,7 +49,7 @@ export default class GMap extends React.Component {
       } else {
         this.setState({
           center: this.mapCenter(config.initialCenter.lat, config.initialCenter.lng)
-        })
+        });
       }
       // create the map and markers after the component has
       // been rendered because we need to manipulate the DOM for Google =(
@@ -90,7 +90,7 @@ export default class GMap extends React.Component {
     const mapOptions = {
       zoom: this.props.config.initialZoom,
       center: center,
-    }
+    };
     if (config && config.colors) {
       mapOptions.styles = MapStyles(config.colors);
       mapOptions.mapTypeId = 'terrain';
@@ -112,7 +112,7 @@ export default class GMap extends React.Component {
         google.maps.event.addListener(thisMarker, 'click', () => this.handleMarkerClick(thisMarker, marker.message));
       }
       return thisMarker;
-    })
+    });
     return markersArray;
   }
 
@@ -120,8 +120,8 @@ export default class GMap extends React.Component {
     // lets map autocenter on user's location (if the user enables it)
     // which takes a while, so the map should get rendered with the initial center first
       navigator.geolocation.getCurrentPosition( (position) => {
-        this.moveMap(position.coords.latitude, position.coords.longitude, "You are here.");
-      }, () => alert("Couldn't find your location"))
+        this.moveMap(position.coords.latitude, position.coords.longitude, 'You are here.');
+      }, () => alert('Couldn\'t find your location'));
   }
 
   handleMarkerClick(marker, message) {
@@ -137,13 +137,13 @@ export default class GMap extends React.Component {
   handleScriptCreate() {
     this.setState({
       scriptLoaded: false
-    })
+    });
   }
 
   handleScriptError() {
     this.setState({
       scriptError: true
-    })
+    });
   }
 
   handleScriptLoad() {
@@ -158,7 +158,7 @@ export default class GMap extends React.Component {
       map: this.map,
       anchor: anchor,
       content: content
-    })
+    });
     google.maps.event.addListenerOnce(anchor.infoWindow, 'closeclick', () => anchor.infoWindowIsOpen = false);
     return anchor.infoWindow;
   }
@@ -170,11 +170,11 @@ export default class GMap extends React.Component {
       draggable: true,
       animation: google.maps.Animation.DROP,
       icon: image
-    })
+    });
   }
 
   mapCenter(lat, lng) {
-    return new google.maps.LatLng(lat,lng);
+    return new google.maps.LatLng(lat, lng);
   }
 
   moveMap(lat, lng, message) {
@@ -187,7 +187,7 @@ export default class GMap extends React.Component {
   }
 
   render() {
-    let url = "http://maps.googleapis.com/maps/api/js?key=" + "AIzaSyBS2QFArW3U4BJ6ocIVXEz65liph1jiVuk"
+    let url = 'http://maps.googleapis.com/maps/api/js?key=' + 'AIzaSyBS2QFArW3U4BJ6ocIVXEz65liph1jiVuk';
     return (
       <div className={'GMap map' + this.props.id}>
         <div className={'GMap-canvas mapCanvas' + this.props.id} ref={'mapCanvas' + this.props.id}></div>
@@ -199,6 +199,6 @@ export default class GMap extends React.Component {
           onLoad={this.handleScriptLoad.bind(this)}
         />
       </div>
-    )
+    );
   }
 }
