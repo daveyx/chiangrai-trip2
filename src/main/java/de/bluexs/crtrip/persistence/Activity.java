@@ -41,6 +41,9 @@ public class Activity {
 	@Column(length=10000)
 	private List<String> texts;
 	
+	@OneToMany(mappedBy = "activity")
+    private List<GallaryImage> gallary;
+	
 	@OneToOne
 	private GMap gMap;
 	
