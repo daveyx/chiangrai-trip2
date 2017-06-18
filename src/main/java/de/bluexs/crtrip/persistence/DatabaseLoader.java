@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -159,70 +161,85 @@ public class DatabaseLoader implements CommandLineRunner {
 		this.activityLinks.save(al211);
 		this.activityLinks.save(al212);
 		
-		final Resource resource = new ClassPathResource("json/21.json");
-		final InputStream resourceInputStream = resource.getInputStream();
-		
-		final Scanner scanner = new Scanner(resourceInputStream).useDelimiter("\\A");
-		final String result = scanner.hasNext() ? scanner.next() : "";
-		resourceInputStream.close();
-		scanner.close();
+		@SuppressWarnings("serial")
+		final Map<Activity, String> activityJsonMap = new HashMap<Activity, String>() {{
+			put(a11, "json/11.json");
+			put(a21, "json/21.json");
+			put(a22, "json/22.json");
+		}};
 		
 		final ObjectMapper objectMapper = new ObjectMapper();
-		try {
-		    final JsonNode node = objectMapper.readValue(result, JsonNode.class);
-		    node.elements().forEachRemaining(n -> {
-		    	System.out.println(n);
-		    	try {
-					final GalleryImage gi = objectMapper.treeToValue(n, GalleryImage.class);
-					gi.setActivity(a11);
-					this.images.save(gi);
-				} catch (final JsonProcessingException e) {
-					e.printStackTrace();
-				}
-		    });
-
-		} catch (IOException e) {
-		    e.printStackTrace();
-		}
-
-		final GalleryImage gi111 = new GalleryImage(
-				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
-			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
-			    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage.",
-			    a11);
-		final GalleryImage gi112 = new GalleryImage(
-				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
-			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
-			    "As you can see, only one luggage was enough for us two... Any comments?",
-			    a11);
+		activityJsonMap.forEach((key, value) -> {
+			
+			String jsonString;
+			try {
+				final Resource resource = new ClassPathResource(value);
+				InputStream resourceInputStream = resource.getInputStream();
+	
+				@SuppressWarnings("resource")
+				final Scanner scanner = new Scanner(resourceInputStream).useDelimiter("\\A");
+				jsonString = scanner.hasNext() ? scanner.next() : "";
+				resourceInputStream.close();
+				scanner.close();
+			} catch (final IOException e1) {
+				jsonString = null;
+				e1.printStackTrace();
+			}
+			
+			try {
+				final JsonNode node = objectMapper.readValue(jsonString, JsonNode.class);
+				node.elements().forEachRemaining(n -> {
+					try {
+						final GalleryImage gi = objectMapper.treeToValue(n, GalleryImage.class);
+						gi.setActivity(key);
+						this.images.save(gi);
+					} catch (final JsonProcessingException e) {
+						e.printStackTrace();
+					}
+				});
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
 		
-		final GalleryImage gi211 = new GalleryImage(
-				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
-			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
-			    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage.",
-				 a21);
-		final GalleryImage gi212 = new GalleryImage(
-				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
-			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
-			    "As you can see, only one luggage was enough for us two... Any comments?",
-			    a21);
-
-		final GalleryImage gi221 = new GalleryImage(
-				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
-			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
-			    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage.",
-			    a22);
-		final GalleryImage gi222 = new GalleryImage(
-				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
-			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
-			    "As you can see, only one luggage was enough for us two... Any comments?",
-			    a22);
-		
-//		this.images.save(gi112);
-		this.images.save(gi211);
-		this.images.save(gi212);
-		this.images.save(gi221);
-		this.images.save(gi222);
+//		final GalleryImage gi111 = new GalleryImage(
+//				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
+//			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
+//			    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage.",
+//			    a11);
+//		final GalleryImage gi112 = new GalleryImage(
+//				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
+//			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
+//			    "As you can see, only one luggage was enough for us two... Any comments?",
+//			    a11);
+//		
+//		final GalleryImage gi211 = new GalleryImage(
+//				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
+//			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
+//			    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage.",
+//				 a21);
+//		final GalleryImage gi212 = new GalleryImage(
+//				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
+//			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
+//			    "As you can see, only one luggage was enough for us two... Any comments?",
+//			    a21);
+//
+//		final GalleryImage gi221 = new GalleryImage(
+//				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
+//			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
+//			    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage.",
+//			    a22);
+//		final GalleryImage gi222 = new GalleryImage(
+//				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
+//			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
+//			    "As you can see, only one luggage was enough for us two... Any comments?",
+//			    a22);
+//		
+////		this.images.save(gi112);
+//		this.images.save(gi211);
+//		this.images.save(gi212);
+//		this.images.save(gi221);
+//		this.images.save(gi222);
 		
 		SecurityContextHolder.clearContext();
 	}
