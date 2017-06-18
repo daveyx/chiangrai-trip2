@@ -59,13 +59,11 @@ public class Activity {
 			final String subtitle, 
 			final List<String> texts, 
 			final GMap gMap,
-			final List<GalleryImage> images,
 			final Day day) {
 		this.title = title;
 		this.subtitle = subtitle;
 		this.texts = texts;
 		this.gMap = gMap;
-		this.gallery = images;
 		this.day = day;
 	}
 

@@ -103,56 +103,23 @@ public class DatabaseLoader implements CommandLineRunner {
 		this.gMaps.save(gm11);
 		this.gMaps.save(gm21);
 		this.gMaps.save(gm22);
-		
-		final List<GalleryImage> gi11 = new ArrayList<GalleryImage>();
-		gi11.add(new GalleryImage(
-					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
-				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
-				    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage."));
-		gi11.add(new GalleryImage(
-					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
-				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
-				    "As you can see, only one luggage was enough for us two... Any comments?"));
-		
-		final List<GalleryImage> gi21 = new ArrayList<GalleryImage>();
-		gi21.add(new GalleryImage(
-					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
-				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
-				    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage."));
-		gi21.add(new GalleryImage(
-					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
-				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
-				    "As you can see, only one luggage was enough for us two... Any comments?"));
-		
-		final List<GalleryImage> gi22 = new ArrayList<GalleryImage>();
-		gi22.add(new GalleryImage(
-					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
-				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
-				    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage."));
-		gi22.add(new GalleryImage(
-					"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
-				    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
-				    "As you can see, only one luggage was enough for us two... Any comments?"));
-		
+				
 		final Activity a11 = new Activity("เชียงราย - Chiang Rai",
 				"About Chiang Rai",
 				new ArrayList<String>(Arrays.asList("The Chiang Rai province is the northernmost province in Thailand. The province has borders to Mayanmar and Laos. Very popular is the Golden Triangle, where the three countries Thailand, Myanmar and Laos meet at the Mekong River.", "Chiang Rai city is the northernmost large city in Thailand.", "The nature in Chiang Rai province is amazing! A lot of mountains, beautiful landscape, lakes, nice temples and awesome waterfalls.", "Chiang Rai is not as busy as Chiang Mai and has many quiet places and nice people everywhere.")),
 				gm11,
-				gi11,
 				day1);
 		
 		final Activity a21 = new Activity("Wat Rong Khun - วัดร่องขุ่น - The White Temple",
 				"About Wat Rong Khun",
 				new ArrayList<String>(Arrays.asList("By the end of the 20th century, the original Wat Rong Khun was in a bad state of repair. Funds were not available for renovation. Chalermchai Kositpipat, a local artist from Chiang Rai, decided to completely rebuild the temple and fund the project with his own money.", "Nowadays this beautiful area is a tourist magnet and at least the white building is a bit crowded by  people. But nevertheless it is worth a visit if you've never been there.", "We first checked out the garden, then moved to the main building and experienced the rest of the area afterwards. Soon i got uncomfortable with the many people and we went back near our car and found a small nice Café for rest.", "For Thai people free, foreigners must pay 50 Baht entrance fee.")),
 				gm21,
-				gi21,
 				day2);
 		
 		final Activity a22 = new Activity("activity 22",
 				"About activity 22",
 				new ArrayList<String>(Arrays.asList("By the end of the 20th century, the original Wat Rong Khun was in a bad state of repair. Funds were not available for renovation. Chalermchai Kositpipat, a local artist from Chiang Rai, decided to completely rebuild the temple and fund the project with his own money.", "Nowadays this beautiful area is a tourist magnet and at least the white building is a bit crowded by  people. But nevertheless it is worth a visit if you've never been there.", "We first checked out the garden, then moved to the main building and experienced the rest of the area afterwards. Soon i got uncomfortable with the many people and we went back near our car and found a small nice Café for rest.", "For Thai people free, foreigners must pay 50 Baht entrance fee.")),
 				gm22,
-				gi22,
 				day2);
 		
 		this.activities.save(a11);
@@ -183,6 +150,46 @@ public class DatabaseLoader implements CommandLineRunner {
 		this.activityLinks.save(al111);
 		this.activityLinks.save(al211);
 		this.activityLinks.save(al212);
+		
+
+		final GalleryImage gi111 = new GalleryImage(
+				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
+			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
+			    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage.",
+			    a11);
+		final GalleryImage gi112 = new GalleryImage(
+				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
+			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
+			    "As you can see, only one luggage was enough for us two... Any comments?",
+			    a11);
+		
+		final GalleryImage gi211 = new GalleryImage(
+				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
+			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
+			    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage.",
+				 a21);
+		final GalleryImage gi212 = new GalleryImage(
+				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
+			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
+			    "As you can see, only one luggage was enough for us two... Any comments?",
+			    a21);
+
+		final GalleryImage gi221 = new GalleryImage(
+				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
+			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
+			    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage.",
+			    a22);
+		final GalleryImage gi222 = new GalleryImage(
+				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
+			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
+			    "As you can see, only one luggage was enough for us two... Any comments?",
+			    a22);
+		this.images.save(gi111);
+		this.images.save(gi112);
+		this.images.save(gi211);
+		this.images.save(gi212);
+		this.images.save(gi221);
+		this.images.save(gi222);
 		
 		SecurityContextHolder.clearContext();
 	}

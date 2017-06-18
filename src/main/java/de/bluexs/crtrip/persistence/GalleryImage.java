@@ -39,9 +39,11 @@ public class GalleryImage {
 	public GalleryImage(
 			final String original, 
 			final String thumbnail, 
-			final String description) {
+			final String description,
+			final Activity activity) {
 		this.original = original;
 		this.thumbnail = thumbnail;
 		this.description = description;
+		this.activity = activity;
 	}
 }
