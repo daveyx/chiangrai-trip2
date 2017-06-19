@@ -1,7 +1,0 @@
-@import "../../node_modules/react-image-gallery/styles/css/image-gallery.css";
-
-@media (max-width: 1024px) {
-  .image-gallery {
-      width: 100%;
-  }
-}
