@@ -165,15 +165,20 @@ public class DatabaseLoader implements CommandLineRunner {
 		this.activityLinks.save(al211);
 		this.activityLinks.save(al212);
 		
+		final Gallery g11 = new Gallery("Our trip from Phuket to Chiang Rai starts...");
+		final Gallery g21 = new Gallery("Impressions of Wat Rong Khun");
+		final Gallery g22 = new Gallery("Our impressions of Singha Park");
+		
+		
 		@SuppressWarnings("serial")
-		final Map<Activity, String> activityJsonMap = new HashMap<Activity, String>() {{
-			put(a11, "json/11.json");
-			put(a21, "json/21.json");
-			put(a22, "json/22.json");
+		final Map<Gallery, String> galleryJsonMap = new HashMap<Gallery, String>() {{
+			put(g11, "json/11.json");
+			put(g21, "json/21.json");
+			put(g22, "json/22.json");
 		}};
 		
 		final ObjectMapper objectMapper = new ObjectMapper();
-		activityJsonMap.forEach((key, value) -> {
+		galleryJsonMap.forEach((key, value) -> {
 			
 			String jsonString;
 			try {
@@ -195,7 +200,7 @@ public class DatabaseLoader implements CommandLineRunner {
 				node.elements().forEachRemaining(n -> {
 					try {
 						final GalleryImage gi = objectMapper.treeToValue(n, GalleryImage.class);
-						gi.setActivity(key);
+						gi.setGallery(key);
 						this.images.save(gi);
 					} catch (final JsonProcessingException e) {
 						e.printStackTrace();
