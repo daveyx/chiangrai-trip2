@@ -21,11 +21,11 @@ export default class Activity extends Component {
     const activityId = Number(this.props.activity.id);
     let pullPushMd = 0;
     let pullPushXs = 0;
-    let bgColor = 'bg-light-grey';
+    let bgColor = 'bg-white';
     if ((activityId + 1) % 2 > 0) {
       pullPushMd = 6;
       pullPushXs = 12;
-      bgColor = 'bg-white';
+      bgColor = 'bg-light-grey';
     }
 
     let settings = {
