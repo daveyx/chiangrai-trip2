@@ -1,3 +1,3 @@
 export const config =  {
-    API_URL: 'http://www.chiangrai-trip.ga/api'
+    API_URL: 'https://www.chiangrai-trip.ga/api'
 };
