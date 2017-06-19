@@ -9,7 +9,7 @@ module.exports = {
   entry: './dev/index.js',
   output: {
     path: BUILD_DIR,
-    filename: 'bundle[hash].js',
+    filename: 'bundle.[hash].js',
     publicPath: '/chiangrai-trip'
   },
   module: {
