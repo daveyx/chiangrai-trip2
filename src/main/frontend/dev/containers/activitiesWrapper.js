@@ -27,10 +27,9 @@ export default class ActivitiesWrapper extends React.Component {
         this.setState({
           data: response.data
         });
+    }).catch(function (error) {
+      console.log('error axios-get activities: ' + error);
     });
-    // .catch(function (error) {
-    //   console.log('error axios-get activities: ' + error);
-    // });
   }
 
   render() {
