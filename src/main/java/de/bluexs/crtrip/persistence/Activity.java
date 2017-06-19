@@ -41,11 +41,11 @@ public class Activity {
 	@Column(length=10000)
 	private List<String> texts;
 	
-	@OneToMany(mappedBy = "activity")
-    private List<GalleryImage> gallery;
-	
 	@OneToOne
 	private GMap gMap;
+	
+	@OneToOne
+	private Gallery gallery;
 	
 	@ManyToOne
 	@JoinColumn(name="day_id")
@@ -59,11 +59,13 @@ public class Activity {
 			final String subtitle, 
 			final List<String> texts, 
 			final GMap gMap,
+			final Gallery gallery,
 			final Day day) {
 		this.title = title;
 		this.subtitle = subtitle;
 		this.texts = texts;
 		this.gMap = gMap;
+		this.gallery = gallery;
 		this.day = day;
 	}
 
