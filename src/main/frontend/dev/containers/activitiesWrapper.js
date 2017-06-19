@@ -1,5 +1,6 @@
 import React from 'react';
 import Activity from '../components/activity.js';
+import {config} from '../config';
 import axios from 'axios';
 
 export default class ActivitiesWrapper extends React.Component {
@@ -21,7 +22,7 @@ export default class ActivitiesWrapper extends React.Component {
   }
 
   getData() {
-    axios.get('http://localhost:8080/api/days/' + (Number(this.props.day) + 1) + '/activities')
+    axios.get(config.API_URL + '/days/' + (Number(this.props.day) + 1) + '/activities')
       .then(response => {
         this.setState({
           data: response.data

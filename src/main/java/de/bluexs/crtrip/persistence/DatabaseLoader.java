@@ -180,9 +180,15 @@ public class DatabaseLoader implements CommandLineRunner {
 				galleries.save(g21),
 				day2);
 		
-		final Activity a22 = new Activity("activity 22",
-				"About activity 22",
-				new ArrayList<String>(Arrays.asList("By the end of the 20th century, the original Wat Rong Khun was in a bad state of repair. Funds were not available for renovation. Chalermchai Kositpipat, a local artist from Chiang Rai, decided to completely rebuild the temple and fund the project with his own money.", "Nowadays this beautiful area is a tourist magnet and at least the white building is a bit crowded by  people. But nevertheless it is worth a visit if you've never been there.", "We first checked out the garden, then moved to the main building and experienced the rest of the area afterwards. Soon i got uncomfortable with the many people and we went back near our car and found a small nice Café for rest.", "For Thai people free, foreigners must pay 50 Baht entrance fee.")),
+		final Activity a22 = new Activity("Singha Park - สิงห์ปาร์ค",
+				"About the Singha Park",
+				new ArrayList<String>(Arrays.asList(
+						"Singha is a big company for beverages in Thailand. The most popular product of them is their Singha beer. Their logo, the Singha, is a powerful mythological lion, found in ancient Indian, Hindu and Thai stories. At the entrance of the park, is a big and nice sculpture of the Singha.",
+						"The park is a huge area and they offer different activities which are not really cheap.",
+						"Actually we wanted to book a tour with a small bus which drive many destinations in the park. But as we would had to wait more than one hour for the next bus, we decided to go by our own.",
+						"We went to the tower, enjoying the nice view there. Then we took a bike for a ride. They want 150 Baht for one bike per hour. So we took a tandem bike, as i though we can save 150 Baht... I sat in the front and Jaae in the back and i am still not sure if she helped me for riding. Ride up a small hill was really exhausting as it also was very hot.",
+						"With the bike we rode to the zoo area for feeding giraffes and birds. After we've giving back the bike, we had a coffee and headed up to our next destination."
+						)),
 				gm22,
 				galleries.save(g22),
 				day2);
@@ -204,16 +210,24 @@ public class DatabaseLoader implements CommandLineRunner {
 				". You can find interesting background information about the meaning of parts of the building, i.e. the bridge and the hands in front of the bridge.",
 				a21);
 		
-		final ActivityLink al212 = new ActivityLink(
-				"https://en.wikipedia.org/wiki/Wat_Rong_Khun",
-				"Wikipedia",
-				"Wanna know more about Wat Rong Khun? Checkout the entry at ",
-				". You can find interesting background information about the meaning of parts of the building, i.e. the bridge and the hands in front of the bridge.",
+		final ActivityLink al221 = new ActivityLink(
+				"https://www.tripadvisor.com/Attraction_Review-g297920-d6771960-Reviews-Singha_Park-Chiang_Rai_Chiang_Rai_Province.html",
+				"tripadvisor",
+				"Have a look on the ",
+				" page for more info about the Singha Park.",
+				a22);
+		
+		final ActivityLink al222 = new ActivityLink(
+				"http://singhapark.com/",
+				"Singha Park Webpage",
+				"They also hava their own ",
+				". But as you can see there, it is more for advertising.",
 				a22);
 		
 		this.activityLinks.save(al111);
 		this.activityLinks.save(al211);
-		this.activityLinks.save(al212);
+		this.activityLinks.save(al221);
+		this.activityLinks.save(al222);
 		
 		SecurityContextHolder.clearContext();
 	}

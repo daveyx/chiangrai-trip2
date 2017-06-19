@@ -2,6 +2,7 @@ import React from 'react';
 import Day from '../components/day.js';
 import EmptyDay from '../components/emptyDay.js';
 import ActivitiesWrapper from './activitiesWrapper.js';
+import {config} from '../config';
 import axios from 'axios';
 
 export default class DayWrapper extends React.Component {
@@ -34,7 +35,7 @@ export default class DayWrapper extends React.Component {
 
   getData(dayNumber) {
     let day = Number(dayNumber) + 1;
-    axios.get('http://localhost:8080/api/days/' + day)
+    axios.get(config.API_URL + '/days/' + day)
       .then(response => {
         this.setState({
           data: response.data
