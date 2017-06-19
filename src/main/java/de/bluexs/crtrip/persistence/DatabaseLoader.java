@@ -26,6 +26,7 @@ import de.bluexs.crtrip.repos.ActivityRepository;
 import de.bluexs.crtrip.repos.DayRepository;
 import de.bluexs.crtrip.repos.GMapRepository;
 import de.bluexs.crtrip.repos.GalleryImageRepository;
+import de.bluexs.crtrip.repos.GalleryRepository;
 import de.bluexs.crtrip.repos.IntroRepository;
 import de.bluexs.crtrip.repos.ManagerRepository;
 
@@ -44,6 +45,7 @@ public class DatabaseLoader implements CommandLineRunner {
 	private final ActivityRepository activities;
 	private final ActivityLinkRepository activityLinks;
 	private final GMapRepository gMaps;
+	private final GalleryRepository galleries;
 	private final GalleryImageRepository images;
 
 	@Autowired
@@ -53,6 +55,7 @@ public class DatabaseLoader implements CommandLineRunner {
 			final ActivityRepository activityRepository,
 			final ActivityLinkRepository activityLinkRepository,
 			final GMapRepository gMapRepository,
+			final GalleryRepository galleryRepository,
 			final GalleryImageRepository galleryImageRepository) {
 		this.days = dayRepository;
 		this.intros = introRepository;
@@ -60,6 +63,7 @@ public class DatabaseLoader implements CommandLineRunner {
 		this.activities = activityRepository;
 		this.activityLinks = activityLinkRepository;
 		this.gMaps = gMapRepository;
+		this.galleries = galleryRepository;
 		this.images = galleryImageRepository;
 	}
 
