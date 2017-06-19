@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -118,24 +119,23 @@ public class DatabaseLoader implements CommandLineRunner {
 		this.gMaps.save(gm21);
 		this.gMaps.save(gm22);
 		
-		final Gallery g11 = new Gallery("Our trip from Phuket to Chiang Rai starts...");
-		final Gallery g21 = new Gallery("Impressions of Wat Rong Khun");
-		final Gallery g22 = new Gallery("Our impressions of Singha Park");
-		galleries.save(g11);
-		galleries.save(g21);
-		galleries.save(g22);
+		final Gallery g11 = new Gallery();
+		final Gallery g21 = new Gallery();
+		final Gallery g22 = new Gallery();
+		g11.setTitle("Our trip from Phuket to Chiang Rai starts...");
+		g21.setTitle("Impressions of Wat Rong Khun");
+		g22.setTitle("Our impressions of Singha Park");
 		
-		@SuppressWarnings("serial")
-		final Map<Gallery, String> galleryJsonMap = new HashMap<Gallery, String>() {{
-			put(g11, "json/11.json");
-			put(g21, "json/21.json");
-			put(g22, "json/22.json");
-		}};
+		final Map<Gallery, String> galleryJsonMap = new HashMap<Gallery, String>();
+		galleryJsonMap.put(g11, "json/11.json");
+		galleryJsonMap.put(g21, "json/21.json");
+		galleryJsonMap.put(g22, "json/22.json");
 		
 		final ObjectMapper objectMapper = new ObjectMapper();
 		galleryJsonMap.forEach((key, value) -> {
 			
 			String jsonString;
+			final List<GalleryImage> images = new ArrayList<GalleryImage>();
 			try {
 				final Resource resource = new ClassPathResource(value);
 				InputStream resourceInputStream = resource.getInputStream();
@@ -155,8 +155,7 @@ public class DatabaseLoader implements CommandLineRunner {
 				node.elements().forEachRemaining(n -> {
 					try {
 						final GalleryImage gi = objectMapper.treeToValue(n, GalleryImage.class);
-						gi.setGallery(key);
-						this.images.save(gi);
+						images.add(this.images.save(gi));
 					} catch (final JsonProcessingException e) {
 						e.printStackTrace();
 					}
@@ -164,27 +163,28 @@ public class DatabaseLoader implements CommandLineRunner {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			key.setGalleryImages(images);
 		});
 				
 		final Activity a11 = new Activity("เชียงราย - Chiang Rai",
 				"About Chiang Rai",
 				new ArrayList<String>(Arrays.asList("The Chiang Rai province is the northernmost province in Thailand. The province has borders to Mayanmar and Laos. Very popular is the Golden Triangle, where the three countries Thailand, Myanmar and Laos meet at the Mekong River.", "Chiang Rai city is the northernmost large city in Thailand.", "The nature in Chiang Rai province is amazing! A lot of mountains, beautiful landscape, lakes, nice temples and awesome waterfalls.", "Chiang Rai is not as busy as Chiang Mai and has many quiet places and nice people everywhere.")),
 				gm11,
-				g11,
+				galleries.save(g11),
 				day1);
 		
 		final Activity a21 = new Activity("Wat Rong Khun - วัดร่องขุ่น - The White Temple",
 				"About Wat Rong Khun",
 				new ArrayList<String>(Arrays.asList("By the end of the 20th century, the original Wat Rong Khun was in a bad state of repair. Funds were not available for renovation. Chalermchai Kositpipat, a local artist from Chiang Rai, decided to completely rebuild the temple and fund the project with his own money.", "Nowadays this beautiful area is a tourist magnet and at least the white building is a bit crowded by  people. But nevertheless it is worth a visit if you've never been there.", "We first checked out the garden, then moved to the main building and experienced the rest of the area afterwards. Soon i got uncomfortable with the many people and we went back near our car and found a small nice Café for rest.", "For Thai people free, foreigners must pay 50 Baht entrance fee.")),
 				gm21,
-				g21,
+				galleries.save(g21),
 				day2);
 		
 		final Activity a22 = new Activity("activity 22",
 				"About activity 22",
 				new ArrayList<String>(Arrays.asList("By the end of the 20th century, the original Wat Rong Khun was in a bad state of repair. Funds were not available for renovation. Chalermchai Kositpipat, a local artist from Chiang Rai, decided to completely rebuild the temple and fund the project with his own money.", "Nowadays this beautiful area is a tourist magnet and at least the white building is a bit crowded by  people. But nevertheless it is worth a visit if you've never been there.", "We first checked out the garden, then moved to the main building and experienced the rest of the area afterwards. Soon i got uncomfortable with the many people and we went back near our car and found a small nice Café for rest.", "For Thai people free, foreigners must pay 50 Baht entrance fee.")),
 				gm22,
-				g22,
+				galleries.save(g22),
 				day2);
 		
 		this.activities.save(a11);

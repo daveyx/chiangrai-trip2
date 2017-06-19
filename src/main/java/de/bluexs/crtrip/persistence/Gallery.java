@@ -31,10 +31,11 @@ public class Gallery {
 
 	private String title;
 	
-	@OneToMany(mappedBy = "gallery")
-    private List<GalleryImage> gallery;
+	@OneToMany
+    private List<GalleryImage> galleryImages;
 	
-	public Gallery(final String title) {
+	public Gallery(final String title, final List<GalleryImage> galleryImages) {
 		this.title = title;
+		this.galleryImages = galleryImages;
 	}
 }
