@@ -169,7 +169,6 @@ public class DatabaseLoader implements CommandLineRunner {
 		final Gallery g21 = new Gallery("Impressions of Wat Rong Khun");
 		final Gallery g22 = new Gallery("Our impressions of Singha Park");
 		
-		
 		@SuppressWarnings("serial")
 		final Map<Gallery, String> galleryJsonMap = new HashMap<Gallery, String>() {{
 			put(g11, "json/11.json");
@@ -210,6 +209,9 @@ public class DatabaseLoader implements CommandLineRunner {
 				e.printStackTrace();
 			}
 		});
+		galleries.save(g11);
+		galleries.save(g21);
+		galleries.save(g22);
 		
 		SecurityContextHolder.clearContext();
 	}
