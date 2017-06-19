@@ -33,17 +33,17 @@ public class GalleryImage {
 	private String description;
 	
 	@ManyToOne
-	@JoinColumn(name="activity_id")
-	private Activity activity;
+	@JoinColumn(name="gallery_id")
+	private Gallery gallery;
 	
 	public GalleryImage(
 			final String original, 
 			final String thumbnail, 
 			final String description,
-			final Activity activity) {
+			final Gallery gallery) {
 		this.original = original;
 		this.thumbnail = thumbnail;
 		this.description = description;
-		this.activity = activity;
+		this.gallery = gallery;
 	}
 }
