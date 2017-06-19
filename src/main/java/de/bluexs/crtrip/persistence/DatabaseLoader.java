@@ -211,46 +211,6 @@ public class DatabaseLoader implements CommandLineRunner {
 			}
 		});
 		
-//		final GalleryImage gi111 = new GalleryImage(
-//				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
-//			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
-//			    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage.",
-//			    a11);
-//		final GalleryImage gi112 = new GalleryImage(
-//				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
-//			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
-//			    "As you can see, only one luggage was enough for us two... Any comments?",
-//			    a11);
-//		
-//		final GalleryImage gi211 = new GalleryImage(
-//				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
-//			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
-//			    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage.",
-//				 a21);
-//		final GalleryImage gi212 = new GalleryImage(
-//				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
-//			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
-//			    "As you can see, only one luggage was enough for us two... Any comments?",
-//			    a21);
-//
-//		final GalleryImage gi221 = new GalleryImage(
-//				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_01.jpg",
-//			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_01.jpg",
-//			    "We took only one luggage, as all lowcost carriers want the customer to pay extra for each luggage.",
-//			    a22);
-//		final GalleryImage gi222 = new GalleryImage(
-//				"https://www.daveyx.ga/chiangrai-trip/img/day1/day1_1_02.jpg",
-//			    "https://www.daveyx.ga/chiangrai-trip/img/day1/thumbs/day1_1_02.jpg",
-//			    "As you can see, only one luggage was enough for us two... Any comments?",
-//			    a22);
-//		
-////		this.images.save(gi112);
-//		this.images.save(gi211);
-//		this.images.save(gi212);
-//		this.images.save(gi221);
-//		this.images.save(gi222);
-		
 		SecurityContextHolder.clearContext();
 	}
 }
-
