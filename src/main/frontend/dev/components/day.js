@@ -26,10 +26,10 @@ export default class Day extends Component {
   }
 
   handleResize(e = null) {
-    let h1base = this.props.pageType === 'home' ? 23 : 21;
+    let h1base = this.props.pageType === 'home' ? 26 : 21;
     let h1marginBase = this.props.pageType === 'home' ? 19 : 16;
     let h1size = Math.round(window.innerWidth / h1base);
-    let h1MarginTop = Math.round(window.innerWidth / h1marginBase) + 10;
+    let h1MarginTop = this.props.data.subtitle ? 80 : Math.round(window.innerWidth / h1marginBase) + 10;
     this.setState({
       h1Style: {
         fontSize: h1size + 'px',
