@@ -86,7 +86,7 @@ export default class Activity extends Component {
         <Row>
           <Col xs={12}>
             <p>(click on the bottom right for full screen mode)<br />(click the 'play' button on the bottom left for a image show)</p>
-            <Gallery images={this.props.activity.gallery} />
+            <Gallery images={this.props.activity.gallery.galleryImages} />
           </Col>
         </Row>
         </Grid>
