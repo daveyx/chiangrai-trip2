@@ -189,7 +189,7 @@ export default class GMap extends React.Component {
   }
 
   render() {
-    let url = 'http://maps.googleapis.com/maps/api/js?key=' + 'AIzaSyBS2QFArW3U4BJ6ocIVXEz65liph1jiVuk';
+    let url = 'https://maps.googleapis.com/maps/api/js?key=' + 'AIzaSyBS2QFArW3U4BJ6ocIVXEz65liph1jiVuk';
     return (
       <div className={'GMap map' + this.props.id}>
         <div className={'GMap-canvas mapCanvas' + this.props.id} ref={'mapCanvas' + this.props.id}></div>
