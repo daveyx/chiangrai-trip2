@@ -190,12 +190,11 @@ public class DatabaseLoader implements CommandLineRunner {
 		this.activities.save(a11);
 		this.activities.save(a21);
 		this.activities.save(a22);
-		
 		final ActivityLink al111 = new ActivityLink(
-				"https://en.wikipedia.org/wiki/Wat_Rong_Khun",
-				"Wikipedia",
-				"Wanna know more about Wat Rong Khun? Checkout the entry at ",
-				". You can find interesting background information about the meaning of parts of the building, i.e. the bridge and the hands in front of the bridge.",
+				"https://en.wikipedia.org/wiki/Chiang_Rai_(city)",
+				"click",
+				"Wanna read more about Chiang Rai? Checkout the article at Wikipedia: ",
+				"",
 				a11);
 		
 		final ActivityLink al211 = new ActivityLink(
