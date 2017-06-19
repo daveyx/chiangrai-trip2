@@ -100,7 +100,7 @@ public class DatabaseLoader implements CommandLineRunner {
 		
 		final Day day1 = new Day("Trip to Chiang Rai with Jaae and David",
 				"<div id=\"author\" className=\"text-center\">by <a href=\"https://www.daveyx.ga\" title=\"daveyx\" target=\"_blank\">daveyx</a></div>",
-				"https://www.daveyx.ga/chiangrai-trip/img/maejaedee.jpg",
+				"https://www.daveyx.ga/images/crtrip/maejaedee.jpg",
 				this.intros.save(i1));
 
 		final Day day2 = new Day("Exploring Chiang Rai",
