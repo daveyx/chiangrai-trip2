@@ -121,6 +121,9 @@ public class DatabaseLoader implements CommandLineRunner {
 		final Gallery g11 = new Gallery("Our trip from Phuket to Chiang Rai starts...");
 		final Gallery g21 = new Gallery("Impressions of Wat Rong Khun");
 		final Gallery g22 = new Gallery("Our impressions of Singha Park");
+		galleries.save(g11);
+		galleries.save(g21);
+		galleries.save(g22);
 		
 		@SuppressWarnings("serial")
 		final Map<Gallery, String> galleryJsonMap = new HashMap<Gallery, String>() {{
@@ -162,9 +165,6 @@ public class DatabaseLoader implements CommandLineRunner {
 				e.printStackTrace();
 			}
 		});
-		galleries.save(g11);
-		galleries.save(g21);
-		galleries.save(g22);
 				
 		final Activity a11 = new Activity("เชียงราย - Chiang Rai",
 				"About Chiang Rai",
