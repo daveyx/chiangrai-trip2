@@ -7,35 +7,25 @@ import '../css/home.css';
 export default class Day extends Component {
   constructor(props) {
     super(props);
+    const marginTop = this.props.pageType === 'home' ? 3 : 15;
     this.state = {
       h1Style: {
-        fontSize: '12px',
-        marginTop: '30px'
+        fontSize: 4 + 'vw',
+        marginTop: marginTop + 'vw'
       }
     };
-    this.handleResize = this.handleResize.bind(this);
   }
 
-  componentDidMount() {
-    window.addEventListener('resize', this.handleResize);
-    this.handleResize();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize, false);
-  }
-
-  handleResize(e = null) {
-    let h1base = this.props.pageType === 'home' ? 26 : 21;
-    let h1marginBase = this.props.pageType === 'home' ? 19 : 16;
-    let h1size = Math.round(window.innerWidth / h1base);
-    let h1MarginTop = this.props.data.subtitle ? 80 : Math.round(window.innerWidth / h1marginBase) + 10;
-    this.setState({
-      h1Style: {
-        fontSize: h1size + 'px',
-        marginTop: h1MarginTop + 'px'
-      }
-    });
+  componentDidUpdate(prevProps) {
+    if (prevProps.pageType !== this.props.pageType) {
+      const marginTop = this.props.pageType === 'home' ? 3 : 10;
+      this.setState({
+        h1Style: {
+          fontSize: 4 + 'vw',
+          marginTop: marginTop + 'vw'
+        }
+      });
+    }
   }
 
   render() {
