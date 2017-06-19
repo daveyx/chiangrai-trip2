@@ -31,7 +31,7 @@ public class Gallery {
 
 	private String title;
 	
-	@OneToMany(mappedBy = "activity")
+	@OneToMany(mappedBy = "gallery")
     private List<GalleryImage> gallery;
 	
 	public Gallery(final String title) {
