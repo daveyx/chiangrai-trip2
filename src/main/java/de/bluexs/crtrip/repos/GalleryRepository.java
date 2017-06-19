@@ -14,7 +14,7 @@ import de.bluexs.crtrip.persistence.Gallery;
 @RepositoryRestResource(exported = false)
 public interface GalleryRepository extends Repository<Gallery, Long>{
 
-	Gallery save(final Gallery image);
+	Gallery save(final Gallery gallery);
 
 	Gallery findById(final Long id);
 	
