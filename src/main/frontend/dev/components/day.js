@@ -68,6 +68,15 @@ export default class Day extends Component {
         </Grid>;
     }
 
+    const tbcInfo = this.props.pageType === 'home' ? null :
+      <Grid>
+        <Row>
+          <Col xs={12}>
+            <p><br />Stay tuned... The documentation of our trip continues soon...</p>
+          </Col>
+        </Row>
+      </Grid>;
+
     if (this.props.data.subtitle) {
       subTitle = <div id="author" className="text-center">by <a href="https://www.daveyx.ga" title="daveyx" target="_blank">daveyx</a></div>;
     }
@@ -99,13 +108,7 @@ export default class Day extends Component {
           </Grid>
           {parallax}
           {this.props.activities}
-          <Grid>
-            <Row>
-              <Col xs={12}>
-                <p><br />Stay tuned... The documentation of our trip continues soon...</p>
-              </Col>
-            </Row>
-          </Grid>
+          {tbcInfo}
         </main>
     );
   }
