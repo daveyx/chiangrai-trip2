@@ -39,10 +39,6 @@ export default class Day extends Component {
   }
 
   render() {
-//    var activityList = this.props.data.activities.map(function(activity, index){
-//      return <Activity key={index} data={activity} />;
-//    });
-
     let imageSection = null;
     let parallax = null;
     let subTitle = null;
@@ -124,4 +120,3 @@ export default class Day extends Component {
     );
   }
 }
-//            {activityList}
