@@ -115,26 +115,31 @@ public class DatabaseLoader implements CommandLineRunner {
 		final GMap gm21 = new GMap("Wat Rong Khun in Google Maps", "99.7629538", "19.8240748", "17");
 		final GMap gm22 = new GMap("Singha Park in Google Maps", "99.7433744", "19.8529981", "15");
 		final GMap gm23 = new GMap("Phra That Chom Si Thep in Google Maps", "99.97350649999998", "19.8761289", "17");
+		final GMap gm24 = new GMap("King Mengrai Monument in Google Maps", "99.8402678", "19.9104391", "18");
 		
 		this.gMaps.save(gm11);
 		this.gMaps.save(gm21);
 		this.gMaps.save(gm22);
 		this.gMaps.save(gm23);
+		this.gMaps.save(gm24);
 		
 		final Gallery g11 = new Gallery();
 		final Gallery g21 = new Gallery();
 		final Gallery g22 = new Gallery();
 		final Gallery g23 = new Gallery();
+		final Gallery g24 = new Gallery();
 		g11.setTitle("Our trip from Phuket to Chiang Rai starts...");
 		g21.setTitle("Impressions of Wat Rong Khun");
 		g22.setTitle("Our impressions of Singha Park");
 		g23.setTitle("Our pics from Phra That Chom Si Thep");
+		g24.setTitle("The last pics of our first day in Chiang Rai");
 		
 		final Map<Gallery, String> galleryJsonMap = new HashMap<Gallery, String>();
 		galleryJsonMap.put(g11, "json/11.json");
 		galleryJsonMap.put(g21, "json/21.json");
 		galleryJsonMap.put(g22, "json/22.json");
 		galleryJsonMap.put(g23, "json/23.json");
+		galleryJsonMap.put(g24, "json/24.json");
 		
 		final ObjectMapper objectMapper = new ObjectMapper();
 		galleryJsonMap.forEach((key, value) -> {
@@ -210,10 +215,22 @@ public class DatabaseLoader implements CommandLineRunner {
 				galleries.save(g23),
 				day2);
 		
+		final Activity a24 = new Activity("King Mengrai Monument - อนุสาวรีย์พ่อขุนเม็งรายมหาราช",
+				"About the King Mengrai Monument",
+				new ArrayList<String>(Arrays.asList(
+						"After so many impressions in Chiang Rai, we were very hungry and found a local restaurant not far from the King Mengrai Monument. There we had a Khao Soy, a curry noodle soup, one of my most favourite thai foods.", 
+						"King Mangrai, also known as Mengrai, was the ruler and the 1st king of the Kingdom Lanna. Finally the Kindom of Lanna and the Kingdom of Siam became the Kingdom of Thailand as we know it today.", 
+						"At the King Mengrai Monument local people pay respect to the 1st king of Lanna. Not many tourists visit this place in the evening although it is a very nice place."
+						)),
+				gm24,
+				galleries.save(g24),
+				day2);
+		
 		this.activities.save(a11);
 		this.activities.save(a21);
 		this.activities.save(a22);
 		this.activities.save(a23);
+		this.activities.save(a24);
 		final ActivityLink al111 = new ActivityLink(
 				"https://en.wikipedia.org/wiki/Chiang_Rai_(city)",
 				"click",
@@ -242,10 +259,18 @@ public class DatabaseLoader implements CommandLineRunner {
 				". But as you can see there, it is more for advertising.",
 				a22);
 		
+		final ActivityLink al241 = new ActivityLink(
+				"https://www.tripadvisor.com/Attraction_Review-g297920-d7258244-Reviews-King_Mengrai_Monument-Chiang_Rai_Chiang_Rai_Province.html",
+				"tripadvisor",
+				"There is a ",
+				" page for the King Mengrai Monument in Chian Rai city. When we were there in the evening, only a few local people were there.",
+				a24);
+		
 		this.activityLinks.save(al111);
 		this.activityLinks.save(al211);
 		this.activityLinks.save(al221);
 		this.activityLinks.save(al222);
+		this.activityLinks.save(al241);
 		
 		SecurityContextHolder.clearContext();
 	}
