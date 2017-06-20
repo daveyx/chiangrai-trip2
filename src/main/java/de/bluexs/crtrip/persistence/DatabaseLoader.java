@@ -114,22 +114,27 @@ public class DatabaseLoader implements CommandLineRunner {
 		final GMap gm11 = new GMap("Chiang Rai in Google Maps", "99.8325", "19.90858", "8");
 		final GMap gm21 = new GMap("Wat Rong Khun in Google Maps", "99.7629538", "19.8240748", "17");
 		final GMap gm22 = new GMap("Singha Park in Google Maps", "99.7433744", "19.8529981", "15");
-
+		final GMap gm23 = new GMap("Phra That Chom Si Thep in Google Maps", "99.97350649999998", "19.8761289", "17");
+		
 		this.gMaps.save(gm11);
 		this.gMaps.save(gm21);
 		this.gMaps.save(gm22);
+		this.gMaps.save(gm23);
 		
 		final Gallery g11 = new Gallery();
 		final Gallery g21 = new Gallery();
 		final Gallery g22 = new Gallery();
+		final Gallery g23 = new Gallery();
 		g11.setTitle("Our trip from Phuket to Chiang Rai starts...");
 		g21.setTitle("Impressions of Wat Rong Khun");
 		g22.setTitle("Our impressions of Singha Park");
+		g23.setTitle("Our pics from Phra That Chom Si Thep");
 		
 		final Map<Gallery, String> galleryJsonMap = new HashMap<Gallery, String>();
 		galleryJsonMap.put(g11, "json/11.json");
 		galleryJsonMap.put(g21, "json/21.json");
 		galleryJsonMap.put(g22, "json/22.json");
+		galleryJsonMap.put(g23, "json/23.json");
 		
 		final ObjectMapper objectMapper = new ObjectMapper();
 		galleryJsonMap.forEach((key, value) -> {
@@ -193,9 +198,22 @@ public class DatabaseLoader implements CommandLineRunner {
 				galleries.save(g22),
 				day2);
 		
+		final Activity a23 = new Activity("Phra That Chom Si Thep - พระธาตุจอมศรีเทพ",
+				"About Phra That Chom Si Thep",
+				new ArrayList<String>(Arrays.asList(
+						"Phra That Chom Si Thep is a very secret place and no tourists will go there. When we were there, we were alone, surrounded by the beautiful and silent nature. If you will ever go there, you probably will be alone up there too.", 
+						"It can not be found at wikipedia or tripadvisor and i will not post an entry there. Even google maps directed us a wrong way, but with the help of some local people we found the way up the hill.", 
+						"It was steep to get up, but no problem with our car. We will face a fucking steep and hardcore way when we will go to Doi Bo. The only person we met here, was a guy on a bike riding up the hill. Strong man!", 
+						"I did really enjoy the silence up there and the beautiful 360° view was awesome. Watching the sunset from there was a moment we will never forget in our lifes."
+						)),
+				gm23,
+				galleries.save(g23),
+				day2);
+		
 		this.activities.save(a11);
 		this.activities.save(a21);
 		this.activities.save(a22);
+		this.activities.save(a23);
 		final ActivityLink al111 = new ActivityLink(
 				"https://en.wikipedia.org/wiki/Chiang_Rai_(city)",
 				"click",
