@@ -3,7 +3,7 @@ package de.bluexs.crtrip.repos;
 import org.springframework.data.repository.Repository;
 import org.springframework.security.access.prepost.PreAuthorize;
 
-import de.bluexs.crtrip.persistence.Day;
+import de.bluexs.crtrip.persistence.data.Day;
 
 /**
  * 

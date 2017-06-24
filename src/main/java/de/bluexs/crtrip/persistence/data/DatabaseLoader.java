@@ -1,4 +1,4 @@
-package de.bluexs.crtrip.persistence;
+package de.bluexs.crtrip.persistence.data;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,6 +22,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import de.bluexs.crtrip.persistence.Manager;
 import de.bluexs.crtrip.repos.ActivityLinkRepository;
 import de.bluexs.crtrip.repos.ActivityRepository;
 import de.bluexs.crtrip.repos.DayRepository;

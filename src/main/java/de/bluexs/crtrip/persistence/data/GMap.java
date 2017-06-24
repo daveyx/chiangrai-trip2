@@ -1,4 +1,4 @@
-package de.bluexs.crtrip.persistence;
+package de.bluexs.crtrip.persistence.data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,22 +20,26 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @JsonInclude(Include.NON_NULL)
-public class GalleryImage {
+public class GMap {
 
 	@Id
 	@GeneratedValue
 	private Long id;
-
-	private String original;
-	private String thumbnail;
-	private String description;
 	
-	public GalleryImage(
-			final String original, 
-			final String thumbnail, 
-			final String description) {
-		this.original = original;
-		this.thumbnail = thumbnail;
-		this.description = description;
+	private String title;
+	private String lng;
+	private String lat;
+	private String zoom;
+	
+	public GMap(
+			final String title,
+			final String lng,
+			final String lat,
+			final String zoom) {
+		this.title = title;
+		this.lng = lng;
+		this.lat = lat;
+		this.zoom = zoom;
 	}
+
 }

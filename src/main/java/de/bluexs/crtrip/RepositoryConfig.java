@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
 
-import de.bluexs.crtrip.persistence.Activity;
+import de.bluexs.crtrip.persistence.data.Activity;
 
 /**
  * 

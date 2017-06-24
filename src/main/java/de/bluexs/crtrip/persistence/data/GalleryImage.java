@@ -1,11 +1,8 @@
-package de.bluexs.crtrip.persistence;
-
-import java.util.List;
+package de.bluexs.crtrip.persistence.data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -23,19 +20,22 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @JsonInclude(Include.NON_NULL)
-public class Gallery {
+public class GalleryImage {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
-	private String title;
+	private String original;
+	private String thumbnail;
+	private String description;
 	
-	@OneToMany
-    private List<GalleryImage> galleryImages;
-	
-	public Gallery(final String title, final List<GalleryImage> galleryImages) {
-		this.title = title;
-		this.galleryImages = galleryImages;
+	public GalleryImage(
+			final String original, 
+			final String thumbnail, 
+			final String description) {
+		this.original = original;
+		this.thumbnail = thumbnail;
+		this.description = description;
 	}
 }

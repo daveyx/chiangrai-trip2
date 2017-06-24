@@ -1,4 +1,4 @@
-package de.bluexs.crtrip.persistence;
+package de.bluexs.crtrip.persistence.data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

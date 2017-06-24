@@ -1,8 +1,11 @@
-package de.bluexs.crtrip.persistence;
+package de.bluexs.crtrip.persistence.data;
+
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -20,26 +23,19 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @JsonInclude(Include.NON_NULL)
-public class GMap {
+public class Gallery {
 
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	private String title;
-	private String lng;
-	private String lat;
-	private String zoom;
-	
-	public GMap(
-			final String title,
-			final String lng,
-			final String lat,
-			final String zoom) {
-		this.title = title;
-		this.lng = lng;
-		this.lat = lat;
-		this.zoom = zoom;
-	}
 
+	private String title;
+	
+	@OneToMany
+    private List<GalleryImage> galleryImages;
+	
+	public Gallery(final String title, final List<GalleryImage> galleryImages) {
+		this.title = title;
+		this.galleryImages = galleryImages;
+	}
 }

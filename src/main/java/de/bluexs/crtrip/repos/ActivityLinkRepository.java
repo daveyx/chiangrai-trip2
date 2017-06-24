@@ -4,7 +4,7 @@ import org.springframework.data.repository.Repository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.security.access.prepost.PreAuthorize;
 
-import de.bluexs.crtrip.persistence.ActivityLink;
+import de.bluexs.crtrip.persistence.data.ActivityLink;
 
 /**
  * 
