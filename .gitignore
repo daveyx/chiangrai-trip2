@@ -26,3 +26,4 @@ nbdist/
 ### project specific ###
 src/main/frontend/node_modules
 src/main/resources/static
+src/main/resources/application.properties
