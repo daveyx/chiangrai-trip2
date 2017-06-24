@@ -1,31 +1,32 @@
 package de.bluexs.crtrip.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import de.bluexs.crtrip.persistence.Manager;
-import de.bluexs.crtrip.repos.ManagerRepository;
+import de.bluexs.crtrip.repos.UserRepository;
+
+/**
+ * 
+ * @author daveyx
+ * 
+ */
 
 @Component
 public class SpringDataJpaUserDetailsService implements UserDetailsService {
 
-	private final ManagerRepository repository;
+	private final UserRepository repository;
 
 	@Autowired
-	public SpringDataJpaUserDetailsService(ManagerRepository repository) {
+	public SpringDataJpaUserDetailsService(final UserRepository repository) {
 		this.repository = repository;
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-		Manager manager = this.repository.findByName(name);
-		return new User(manager.getName(), manager.getPassword(),
-				AuthorityUtils.createAuthorityList(manager.getRoles()));
+	public UserDetails loadUserByUsername(final String name) throws UsernameNotFoundException {
+		return repository.findOneByUsername(name);
 	}
 
 }
