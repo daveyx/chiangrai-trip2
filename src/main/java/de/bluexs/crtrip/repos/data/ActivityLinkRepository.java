@@ -1,10 +1,10 @@
-package de.bluexs.crtrip.repos;
+package de.bluexs.crtrip.repos.data;
 
 import org.springframework.data.repository.Repository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.security.access.prepost.PreAuthorize;
 
-import de.bluexs.crtrip.persistence.data.Intro;
+import de.bluexs.crtrip.persistence.data.ActivityLink;
 
 /**
  * 
@@ -13,11 +13,11 @@ import de.bluexs.crtrip.persistence.data.Intro;
  */
 
 @RepositoryRestResource(exported = false)
-public interface IntroRepository extends Repository<Intro, Long> {
+public interface ActivityLinkRepository extends Repository<ActivityLink, Long>{
 
-	Intro findById(final Long id);
-	
 	@PreAuthorize("hasAuthority('ADMIN')")
-	Intro save(Intro intro);
+	ActivityLink save(ActivityLink link);
 
+	ActivityLink findById(Long id);
+	
 }

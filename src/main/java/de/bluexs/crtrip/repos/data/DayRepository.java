@@ -1,4 +1,4 @@
-package de.bluexs.crtrip.repos;
+package de.bluexs.crtrip.repos.data;
 
 import org.springframework.data.repository.Repository;
 import org.springframework.security.access.prepost.PreAuthorize;

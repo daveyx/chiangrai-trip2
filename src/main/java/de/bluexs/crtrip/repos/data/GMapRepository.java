@@ -1,10 +1,10 @@
-package de.bluexs.crtrip.repos;
+package de.bluexs.crtrip.repos.data;
 
 import org.springframework.data.repository.Repository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.security.access.prepost.PreAuthorize;
 
-import de.bluexs.crtrip.persistence.data.GalleryImage;
+import de.bluexs.crtrip.persistence.data.GMap;
 
 /**
  * 
@@ -13,11 +13,11 @@ import de.bluexs.crtrip.persistence.data.GalleryImage;
  */
 
 @RepositoryRestResource(exported = false)
-public interface GalleryImageRepository extends Repository<GalleryImage, Long>{
+public interface GMapRepository extends Repository<GMap, Long>{
 
 	@PreAuthorize("hasAuthority('ADMIN')")
-	GalleryImage save(final GalleryImage image);
+	GMap save(GMap link);
 
-	GalleryImage findById(final Long id);
+	GMap findById(Long id);
 	
 }

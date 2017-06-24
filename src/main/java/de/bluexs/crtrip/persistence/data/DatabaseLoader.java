@@ -23,14 +23,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.bluexs.crtrip.persistence.Manager;
-import de.bluexs.crtrip.repos.ActivityLinkRepository;
-import de.bluexs.crtrip.repos.ActivityRepository;
-import de.bluexs.crtrip.repos.DayRepository;
-import de.bluexs.crtrip.repos.GMapRepository;
-import de.bluexs.crtrip.repos.GalleryImageRepository;
-import de.bluexs.crtrip.repos.GalleryRepository;
-import de.bluexs.crtrip.repos.IntroRepository;
 import de.bluexs.crtrip.repos.ManagerRepository;
+import de.bluexs.crtrip.repos.data.ActivityLinkRepository;
+import de.bluexs.crtrip.repos.data.ActivityRepository;
+import de.bluexs.crtrip.repos.data.DayRepository;
+import de.bluexs.crtrip.repos.data.GMapRepository;
+import de.bluexs.crtrip.repos.data.GalleryImageRepository;
+import de.bluexs.crtrip.repos.data.GalleryRepository;
+import de.bluexs.crtrip.repos.data.IntroRepository;
 
 /**
  * 

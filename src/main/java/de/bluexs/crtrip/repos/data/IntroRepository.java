@@ -1,10 +1,10 @@
-package de.bluexs.crtrip.repos;
+package de.bluexs.crtrip.repos.data;
 
 import org.springframework.data.repository.Repository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.security.access.prepost.PreAuthorize;
 
-import de.bluexs.crtrip.persistence.data.Gallery;
+import de.bluexs.crtrip.persistence.data.Intro;
 
 /**
  * 
@@ -13,11 +13,11 @@ import de.bluexs.crtrip.persistence.data.Gallery;
  */
 
 @RepositoryRestResource(exported = false)
-public interface GalleryRepository extends Repository<Gallery, Long>{
+public interface IntroRepository extends Repository<Intro, Long> {
 
-	@PreAuthorize("hasAuthority('ADMIN')")
-	Gallery save(final Gallery gallery);
-
-	Gallery findById(final Long id);
+	Intro findById(final Long id);
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
+	Intro save(Intro intro);
+
 }
