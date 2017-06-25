@@ -14,6 +14,6 @@ import de.bluexs.crtrip.persistence.User;
 @RepositoryRestResource(exported = false)
 public interface UserRepository extends JpaRepository<User, Long> {
 	
-	User findOneByUsername(final String username);
+	User findByEmail(final String email);
 	
 }
