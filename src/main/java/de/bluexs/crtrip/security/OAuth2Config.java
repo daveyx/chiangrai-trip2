@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,7 +33,7 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	}
 
 	@Override
-	public void configure(AuthorizationServerEndpointsConfigurer configurer) throws Exception {
+	public void configure(final AuthorizationServerEndpointsConfigurer configurer) throws Exception {
 		configurer.authenticationManager(authenticationManager);
 		configurer.userDetailsService(userDetailsService);
 	}
@@ -41,5 +42,14 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory().withClient("daveyx").secret("secret").accessTokenValiditySeconds(expiration)
 				.scopes("read", "write").authorizedGrantTypes("password", "refresh_token").resourceIds("resource");
+	}
+
+	@Override
+	protected void configure(final HttpSecurity http) throws Exception {
+		http
+			.authorizeRequests()
+				.antMatchers("/**").anonymous()
+	            .and()
+	            .csrf().disable();
 	}
 }
