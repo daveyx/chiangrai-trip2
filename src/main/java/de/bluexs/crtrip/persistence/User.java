@@ -17,9 +17,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "users")
 public class User implements UserDetails {
 
@@ -47,7 +49,8 @@ public class User implements UserDetails {
 	public User(final String username, final String email, final String password) {
 		this.username = username;
 		this.email = email;
-		this.setPassword(password);
+//		this.setPassword(password);
+		this.password = password;
 		this.enabled = true;
 	}
 
