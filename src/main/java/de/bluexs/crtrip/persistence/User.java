@@ -44,6 +44,13 @@ public class User implements UserDetails {
 	@Column(name = "enabled", nullable = false)
 	private boolean enabled;
 
+	public User(final String username, final String email, final String password) {
+		this.username = username;
+		this.email = email;
+		this.setPassword(password);
+		this.enabled = true;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
