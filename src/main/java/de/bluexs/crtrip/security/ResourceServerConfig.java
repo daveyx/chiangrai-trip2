@@ -14,7 +14,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 
 @Configuration
 @EnableResourceServer
-public class WebSecurityConfig extends ResourceServerConfigurerAdapter {
+public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
 	// avoid "Invalid token does not contain resource id (none)"
 	@Override
