@@ -13,10 +13,17 @@ import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
+
+	public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
 
 	static final long serialVersionUID = 1L;
 
@@ -25,8 +32,11 @@ public class User implements UserDetails {
 	@Column(name = "user_id", nullable = false, updatable = false)
 	private Long id;
 
-	@Column(name = "username", nullable = false, unique = true)
+	@Column(name = "username", nullable = true, unique = false)
 	private String username;
+
+	@Column(name = "email", nullable = false, unique = true)
+	private String email;
 
 	@Column(name = "password", nullable = false)
 	private String password;
@@ -58,18 +68,7 @@ public class User implements UserDetails {
 		return true;
 	}
 
-	@Override
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	@Override
-	public String getPassword() {
-		return password;
-	}
-
-	@Override
-	public String getUsername() {
-		return username;
+	public void setPassword(final String password) {
+		this.password = PASSWORD_ENCODER.encode(password);
 	}
 }
