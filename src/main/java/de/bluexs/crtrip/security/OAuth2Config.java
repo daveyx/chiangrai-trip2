@@ -48,14 +48,14 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("daveyx").secret("secret").accessTokenValiditySeconds(expiration)
+		clients.inMemory().withClient("daveyx").secret(PASSWORD_ENCODER.encode("secret")).accessTokenValiditySeconds(expiration)
 				.scopes("read", "write").authorizedGrantTypes("password", "refresh_token").resourceIds("resource");
 	}
 
-//	@Override
-//    public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-//        oauthServer.passwordEncoder(PASSWORD_ENCODER);
-//    }
+	@Override
+    public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+        oauthServer.passwordEncoder(PASSWORD_ENCODER);
+    }
 
 //	@Override
 //    public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
