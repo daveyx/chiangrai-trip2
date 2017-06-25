@@ -43,13 +43,4 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 		clients.inMemory().withClient("daveyx").secret("secret").accessTokenValiditySeconds(expiration)
 				.scopes("read", "write").authorizedGrantTypes("password", "refresh_token").resourceIds("resource");
 	}
-
-	@Override
-	protected void configure(final HttpSecurity http) throws Exception {
-		http
-			.authorizeRequests()
-				.antMatchers("/**").anonymous()
-	            .and()
-	            .csrf().disable();
-	}
 }
