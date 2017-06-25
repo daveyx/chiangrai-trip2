@@ -40,7 +40,7 @@ public class User implements UserDetails {
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 
-	@Column(name = "password", nullable = false)
+	@Column(length=1200, name = "password", nullable = false)
 	private String password;
 
 	@Column(name = "enabled", nullable = false)
@@ -49,8 +49,7 @@ public class User implements UserDetails {
 	public User(final String username, final String email, final String password) {
 		this.username = username;
 		this.email = email;
-//		this.setPassword(password);
-		this.password = password;
+		this.setPassword(password);
 		this.enabled = true;
 	}
 
