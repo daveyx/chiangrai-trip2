@@ -28,19 +28,22 @@ public class Manager {
 
 	public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
 
-	private @Id @GeneratedValue Long id;
+	@Id
+	@GeneratedValue
+	private Long id;
 
 	private String name;
 
-	private @JsonIgnore String password;
+	@JsonIgnore
+	private String password;
 
 	private String[] roles;
 
-	public void setPassword(String password) {
+	public void setPassword(final String password) {
 		this.password = PASSWORD_ENCODER.encode(password);
 	}
 
-	public Manager(String name, String password, String... roles) {
+	public Manager(final String name, final String password, final String... roles) {
 
 		this.name = name;
 		this.setPassword(password);
