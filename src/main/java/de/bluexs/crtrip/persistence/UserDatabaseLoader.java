@@ -45,7 +45,7 @@ import de.bluexs.crtrip.repos.data.IntroRepository;
  */
 
 @Component
-public class DatabaseLoader implements CommandLineRunner {
+public class UserDatabaseLoader implements CommandLineRunner {
 
 	private final DayRepository days;
 	private final IntroRepository intros;
@@ -57,7 +57,7 @@ public class DatabaseLoader implements CommandLineRunner {
 	private final GalleryImageRepository images;
 
 	@Autowired
-	public DatabaseLoader(final DayRepository dayRepository, 
+	public UserDatabaseLoader(final DayRepository dayRepository, 
 			final IntroRepository introRepository, 
 			final ManagerRepository managerRepository,
 			final ActivityRepository activityRepository,
