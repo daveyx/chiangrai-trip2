@@ -11,7 +11,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  */
 
 @SpringBootApplication
-@EnableResourceServer
 public class CrtripApplication {
 
 	public static void main(String[] args) {

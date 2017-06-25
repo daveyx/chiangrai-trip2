@@ -2,8 +2,9 @@ package de.bluexs.crtrip.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
 /**
  * 
@@ -12,16 +13,23 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 
 @Configuration
-@EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+@EnableResourceServer
+public class WebSecurityConfig extends ResourceServerConfigurerAdapter {
+	
+	// avoid "Invalid token does not contain resource id (none)"
+	@Override
+    public void configure(ResourceServerSecurityConfigurer resources) {
+        resources.resourceId(null);
+    }
 
     @Override
-    protected void configure(final HttpSecurity http) throws Exception {
+    public void configure(final HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
-            .authorizeRequests()
-                .antMatchers("/greeting*").permitAll()
-                .antMatchers("/**").authenticated();
+        .csrf().disable()
+        .anonymous().and()
+        .authorizeRequests()
+        .antMatchers("/greeting*", "/oauth/token").permitAll()
+        .antMatchers("/api/**").authenticated();
     }
 
 }
