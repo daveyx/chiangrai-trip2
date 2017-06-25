@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 
 /**
  * 
@@ -22,6 +23,8 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 @Configuration
 @EnableAuthorizationServer
 public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
+
+	public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
 
 	@Autowired
 	private UserDetailsService userDetailsService;
@@ -48,9 +51,15 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 		clients.inMemory().withClient("daveyx").secret("secret").accessTokenValiditySeconds(expiration)
 				.scopes("read", "write").authorizedGrantTypes("password", "refresh_token").resourceIds("resource");
 	}
-	
+
+//	@Override
+//    public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+//        oauthServer.passwordEncoder(PASSWORD_ENCODER);
+//    }
+
 //	@Override
 //    public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
 //        oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
 //    }
+
 }
