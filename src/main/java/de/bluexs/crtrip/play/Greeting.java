@@ -26,8 +26,8 @@ public class Greeting {
     
     private String content;
 
-    public Greeting(final long fakeId, final String content) {
-        this.fakeId = fakeId;
+    public Greeting(final String content, final long fakeId) {
         this.content = content;
+        this.fakeId = fakeId;
     }
 }
