@@ -32,10 +32,10 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
-	@Value("${daveyx.oauth.tokenTimeoutAccess:3600}")
+	@Value("${oauth.tokenTimeoutAccess:3600}")
 	private int expirationAccess;
 
-	@Value("${daveyx.oauth.tokenTimeoutRefresh:172800}") // two days
+	@Value("${oauth.tokenTimeoutRefresh:172800}") // two days
 	private int expirationRefresh;
 
 	@Bean
