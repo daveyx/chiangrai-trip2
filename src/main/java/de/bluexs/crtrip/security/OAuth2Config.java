@@ -32,8 +32,11 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
-	@Value("${daveyx.oauth.tokenTimeout:3600}")
-	private int expiration;
+	@Value("${daveyx.oauth.tokenTimeoutAccess:3600}")
+	private int expirationAccess;
+
+	@Value("${daveyx.oauth.tokenTimeoutRefresh:172800}") // two days
+	private int expirationRefresh;
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -48,8 +51,15 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("daveyx").secret(PASSWORD_ENCODER.encode("secret")).accessTokenValiditySeconds(expiration)
-				.scopes("read", "write").authorizedGrantTypes("password", "refresh_token").resourceIds("resource");
+		clients
+			.inMemory()
+			.withClient("daveyx")
+			.secret(PASSWORD_ENCODER.encode("secret"))
+			.accessTokenValiditySeconds(expirationAccess)
+			.refreshTokenValiditySeconds(expirationRefresh)
+			.scopes("read", "write")
+			.authorizedGrantTypes("password", "refresh_token")
+			.resourceIds("resource");
 	}
 
 	@Override
