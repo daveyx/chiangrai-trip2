@@ -1,5 +1,7 @@
 package de.bluexs.crtrip.security;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +15,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
 /**
  * 
@@ -38,6 +42,9 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	@Value("${oauth.tokenTimeoutRefresh:172800}") // two days
 	private int expirationRefresh;
 
+	@Autowired
+	private DataSource dataSource;
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -52,7 +59,8 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients
-			.inMemory()
+			.jdbc(dataSource)
+//			.inMemory()
 			.withClient("daveyx")
 			.secret(PASSWORD_ENCODER.encode("secret"))
 			.accessTokenValiditySeconds(expirationAccess)
@@ -66,6 +74,11 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
     public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
         oauthServer.passwordEncoder(PASSWORD_ENCODER);
     }
+
+	@Bean
+	public TokenStore tokenStore() {
+	    return new JdbcTokenStore(dataSource);
+	}
 
 //	@Override
 //    public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
