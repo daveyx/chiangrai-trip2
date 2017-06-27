@@ -19,7 +19,7 @@ import de.bluexs.crtrip.persistence.Manager;
 //@Configuration
 //@EnableWebSecurity
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private SpringDataJpaUserDetailsService userDetailsService;
