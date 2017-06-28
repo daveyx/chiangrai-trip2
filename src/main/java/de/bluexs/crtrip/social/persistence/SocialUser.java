@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import de.bluexs.crtrip.persistence.BaseUser;
 import de.bluexs.crtrip.persistence.User;
 import lombok.Data;
 
@@ -16,7 +17,7 @@ import lombok.Data;
 @Entity
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"userId", "providerId", "providerUserId"}),
 		@UniqueConstraint(columnNames = {"userId", "providerId", "rank"})})
-public class SocialUser {
+public class SocialUser extends BaseUser {
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "userId", nullable = false, updatable = false)
